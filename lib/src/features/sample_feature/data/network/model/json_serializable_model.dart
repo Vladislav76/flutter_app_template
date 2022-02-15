@@ -10,6 +10,4 @@ class Model {
   final int id;
 
   factory Model.fromJson(Map<String, dynamic> json) => _$ModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ModelToJson(this);
 }

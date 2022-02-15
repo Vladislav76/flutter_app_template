@@ -9,7 +9,3 @@ part of 'json_serializable_model.dart';
 Model _$ModelFromJson(Map<String, dynamic> json) => Model(
       id: json['id'] as int? ?? 0,
     );
-
-Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
-      'id': instance.id,
-    };
