@@ -9,12 +9,12 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     logger.d(
-      '* * * Network request * * *\n' +
-          '- URI         : ${options.uri}\n' +
-          '- Headers     : ${options.headers}\n' +
-          '- Base URL    : ${options.baseUrl}\n' +
-          '- Query params: ${options.queryParameters}\n' +
-          '- Data        : ${options.data}',
+      '* * * Network request * * *\n'
+      '- URI         : ${options.uri}\n'
+      '- Headers     : ${options.headers}\n'
+      '- Base URL    : ${options.baseUrl}\n'
+      '- Query params: ${options.queryParameters}\n'
+      '- Data        : ${options.data}',
     );
     handler.next(options);
   }
@@ -22,7 +22,9 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     logger.d(
-      '* * * Network response * * *\n' + '- Code: ${response.statusCode}\n' + '- Data: ${response.data.toString()}',
+      '* * * Network response * * *\n'
+      '- Code: ${response.statusCode}\n'
+      '- Data: ${response.data.toString()}',
     );
     handler.next(response);
   }
@@ -30,11 +32,11 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     logger.d(
-      '* * * Network error * * *\n' +
-          '- Error   : ${err.error}\n' +
-          '- Message : ${err.message}\n' +
-          '- Code    : ${err.response?.statusCode}\n' +
-          '- Response: ${err.response}',
+      '* * * Network error * * *\n'
+      '- Error   : ${err.error}\n'
+      '- Message : ${err.message}\n'
+      '- Code    : ${err.response?.statusCode}\n'
+      '- Response: ${err.response}',
     );
     handler.next(err);
   }

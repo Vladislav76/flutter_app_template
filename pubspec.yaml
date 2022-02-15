@@ -9,13 +9,16 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.16.1 <3.0.0"
 
-# App packages
+# Application packages
 dependencies:
+  # Flutter SDK
   flutter:
     sdk: flutter
+
+  # Internationalization
   flutter_localizations:
     sdk: flutter
-  
+
   # Serialization
   json_annotation: ^4.4.0
   built_value: ^8.1.4
@@ -32,18 +35,15 @@ dependencies:
 
 # Development packages
 dev_dependencies:
+  # Testing
   flutter_test:
     sdk: flutter
 
-  # Code generation  
-  build_runner: ^2.1.7
-
-  # Serialization
-  json_serializable: ^6.1.4
-  built_value_generator: ^8.1.4
-
-  # Networking
-  chopper_generator: ^4.0.5
+  # Code generation 
+  build_runner: ^2.1.7 # Code generation support
+  json_serializable: ^6.1.4 # Serialization
+  built_value_generator: ^8.1.4 # Serialization
+  chopper_generator: ^4.0.5 # Networking
 
   # Linting
   flutter_lints: ^1.0.4
@@ -57,3 +57,12 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+
+# Flutter Intl IDE extension    
+flutter_intl:
+  enabled: true # Required. Must be set to true to activate the plugin. Default: false
+  class_name: S # Optional. Sets the name for the generated localization class. Default: S
+  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
+  arb_dir: lib/l10n # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
+  output_dir: lib/generated # Optional. Sets the directory of generated localization files. Provided value should be a valid path on your system. Default: lib/generated
+  use_deferred_loading: false # Optional. Must be set to true to generate localization code that is loaded with deferred loading. Default: false
