@@ -3,8 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:template_app/generated/l10n.dart';
 import 'package:template_app/src/features/sample_feature/presentation/ui/sample_feature_page.dart';
-import 'package:template_app/src/settings/item_details_page.dart';
-import 'package:template_app/src/settings/sample_item_list_view.dart';
 import 'package:template_app/src/settings/settings_controller.dart';
 import 'package:template_app/src/settings/settings_view.dart';
 
@@ -66,9 +64,7 @@ class TemplateApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case ItemDetailsPage.routeName:
-                    return const ItemDetailsPage();
-                  case SampleItemListView.routeName:
+                  case SampleFeaturePage.routeName:
                   default:
                     return const SampleFeaturePage();
                 }

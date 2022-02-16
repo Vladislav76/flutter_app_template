@@ -16,7 +16,7 @@ class RandomEntityStateNotifier extends StateNotifier<ViewState<Entity, Object>>
   }) : super(const ViewState.initial()) {
     randomize();
   }
-  final SampleFeatureRepostitory repository;
+  final SampleFeatureRepository repository;
   Entity? _lastData;
 
   void randomize() async {

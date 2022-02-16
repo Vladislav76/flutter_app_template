@@ -5,12 +5,12 @@ import 'package:template_app/src/features/sample_feature/data/network/service/sa
 import 'package:template_app/src/features/sample_feature/domain/entity/entity.dart';
 import 'package:template_app/src/features/sample_feature/domain/repository/sample_feature_repository.dart';
 
-final sampleFeatureRepositoryProvider = Provider<SampleFeatureRepostitory>((ref) {
+final sampleFeatureRepositoryProvider = Provider<SampleFeatureRepository>((ref) {
   final service = SampleFeatureService.createDefault();
   return DefaultSampleFeatureRepository(service: service);
 });
 
-class DefaultSampleFeatureRepository implements SampleFeatureRepostitory {
+class DefaultSampleFeatureRepository implements SampleFeatureRepository {
   DefaultSampleFeatureRepository({
     required SampleFeatureServiceApi service,
   }) : _service = service;

@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
 import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/sample_feature/domain/entity/entity.dart';
-import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_entity_notifier.dart';
+import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_entity_state_notifier.dart';
 import 'package:template_app/src/features/sample_feature/presentation/ui/widgets/random_entity_request_button.dart';
 
 class SampleFeaturePage extends StatelessWidget {
   const SampleFeaturePage({Key? key}) : super(key: key);
+  static const routeName = '/sample_feature';
 
   @override
   Widget build(BuildContext context) {
