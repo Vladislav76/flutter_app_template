@@ -33,6 +33,9 @@ dependencies:
   # State management
   flutter_riverpod: ^1.0.3
 
+  # Data classes
+  freezed_annotation: ^1.1.0
+
 # Development packages
 dev_dependencies:
   # Testing
@@ -44,6 +47,7 @@ dev_dependencies:
   json_serializable: ^6.1.4 # Serialization
   built_value_generator: ^8.1.4 # Serialization
   chopper_generator: ^4.0.5 # Networking
+  freezed: ^1.1.1 # Data classes
 
   # Linting
   flutter_lints: ^1.0.4

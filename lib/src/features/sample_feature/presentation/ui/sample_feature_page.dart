@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/features/sample_feature/presentation/provider/random_entity_provider.dart';
+import 'package:template_app/generated/l10n.dart';
+import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_entity_notifier.dart';
 import 'package:template_app/src/features/sample_feature/presentation/ui/widgets/random_entity_request_button.dart';
 
 class SampleFeaturePage extends StatelessWidget {
@@ -13,23 +14,24 @@ class SampleFeaturePage extends StatelessWidget {
         child: Center(
           child: Consumer(
             builder: (_, ref, __) {
-              final futureAsyncEntity = ref.watch(randomEntityProvider);
-              return futureAsyncEntity.when(
+              final state = ref.watch(randomEntityStateProvider);
+              return state.when(
+                initial: () => Container(),
+                loading: () => const CircularProgressIndicator(),
                 data: (entity) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Random entity (ID: ${entity.id})'),
-                    const RandomEntityRequestButton(),
+                    RandomEntityRequestButton(message: S.of(context).randomize),
                   ],
                 ),
-                error: (e, st) => Column(
+                error: (e) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Error: $e\n$st'),
-                    const RandomEntityRequestButton(),
+                    Text('Error: $e'),
+                    RandomEntityRequestButton(message: S.of(context).tryAgain),
                   ],
                 ),
-                loading: () => const CircularProgressIndicator(),
               );
             },
           ),

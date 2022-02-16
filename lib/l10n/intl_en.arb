@@ -1,4 +1,5 @@
 {
     "appTitle": "Template App",
-    "randomize": "Randomize!"
+    "randomize": "Randomize!",
+    "tryAgain": "Try again"
 }

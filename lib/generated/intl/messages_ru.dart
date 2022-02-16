@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle":
             MessageLookupByLibrary.simpleMessage("Шаблонное приложение"),
-        "randomize": MessageLookupByLibrary.simpleMessage("Рандомизировать!")
+        "randomize": MessageLookupByLibrary.simpleMessage("Рандомизировать!"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Попровать снова")
       };
 }
