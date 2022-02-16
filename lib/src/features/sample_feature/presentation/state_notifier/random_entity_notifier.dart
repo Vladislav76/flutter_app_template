@@ -17,14 +17,16 @@ class RandomEntityStateNotifier extends StateNotifier<ViewState<Entity, Object>>
     randomize();
   }
   final SampleFeatureRepostitory repository;
+  Entity? _lastData;
 
   void randomize() async {
     state = const ViewState.loading();
     try {
       final data = await repository.getRandomEntity();
+      _lastData = data;
       state = ViewState.data(data);
     } catch (e) {
-      state = ViewState.error(e);
+      state = ViewState.error(e, _lastData);
     }
   }
 }

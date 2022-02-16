@@ -32,9 +32,10 @@ class _$ViewStateTearOff {
     );
   }
 
-  ErrorViewState<T, E> error<T, E>(E error) {
+  ErrorViewState<T, E> error<T, E>(E error, T? lastData) {
     return ErrorViewState<T, E>(
       error,
+      lastData,
     );
   }
 }
@@ -49,7 +50,7 @@ mixin _$ViewState<T, E> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E error) error,
+    required TResult Function(E error, T? lastData) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +58,7 @@ mixin _$ViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,7 +66,7 @@ mixin _$ViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,7 +158,7 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E error) error,
+    required TResult Function(E error, T? lastData) error,
   }) {
     return initial();
   }
@@ -168,7 +169,7 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
   }) {
     return initial?.call();
   }
@@ -179,7 +180,7 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -274,7 +275,7 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E error) error,
+    required TResult Function(E error, T? lastData) error,
   }) {
     return loading();
   }
@@ -285,7 +286,7 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
   }) {
     return loading?.call();
   }
@@ -296,7 +297,7 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -415,7 +416,7 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E error) error,
+    required TResult Function(E error, T? lastData) error,
   }) {
     return data(this.data);
   }
@@ -426,7 +427,7 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
   }) {
     return data?.call(this.data);
   }
@@ -437,7 +438,7 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -498,7 +499,7 @@ abstract class $ErrorViewStateCopyWith<T, E, $Res> {
   factory $ErrorViewStateCopyWith(ErrorViewState<T, E> value,
           $Res Function(ErrorViewState<T, E>) then) =
       _$ErrorViewStateCopyWithImpl<T, E, $Res>;
-  $Res call({E error});
+  $Res call({E error, T? lastData});
 }
 
 /// @nodoc
@@ -515,12 +516,17 @@ class _$ErrorViewStateCopyWithImpl<T, E, $Res>
   @override
   $Res call({
     Object? error = freezed,
+    Object? lastData = freezed,
   }) {
     return _then(ErrorViewState<T, E>(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as E,
+      lastData == freezed
+          ? _value.lastData
+          : lastData // ignore: cast_nullable_to_non_nullable
+              as T?,
     ));
   }
 }
@@ -528,14 +534,16 @@ class _$ErrorViewStateCopyWithImpl<T, E, $Res>
 /// @nodoc
 
 class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
-  const _$ErrorViewState(this.error);
+  const _$ErrorViewState(this.error, this.lastData);
 
   @override
   final E error;
+  @override
+  final T? lastData;
 
   @override
   String toString() {
-    return 'ViewState<$T, $E>.error(error: $error)';
+    return 'ViewState<$T, $E>.error(error: $error, lastData: $lastData)';
   }
 
   @override
@@ -543,12 +551,15 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ErrorViewState<T, E> &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality().equals(other.lastData, lastData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(lastData));
 
   @JsonKey(ignore: true)
   @override
@@ -562,9 +573,9 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E error) error,
+    required TResult Function(E error, T? lastData) error,
   }) {
-    return error(this.error);
+    return error(this.error, lastData);
   }
 
   @override
@@ -573,9 +584,9 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
   }) {
-    return error?.call(this.error);
+    return error?.call(this.error, lastData);
   }
 
   @override
@@ -584,11 +595,11 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E error)? error,
+    TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(this.error, lastData);
     }
     return orElse();
   }
@@ -632,9 +643,10 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
 }
 
 abstract class ErrorViewState<T, E> implements ViewState<T, E> {
-  const factory ErrorViewState(E error) = _$ErrorViewState<T, E>;
+  const factory ErrorViewState(E error, T? lastData) = _$ErrorViewState<T, E>;
 
   E get error;
+  T? get lastData;
   @JsonKey(ignore: true)
   $ErrorViewStateCopyWith<T, E, ErrorViewState<T, E>> get copyWith =>
       throw _privateConstructorUsedError;
