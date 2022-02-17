@@ -1,11 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'json_serializable_model.dart';
+part of 'feature_object_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Model _$ModelFromJson(Map<String, dynamic> json) => Model(
+FeatureObjectDTO _$FeatureObjectDTOFromJson(Map<String, dynamic> json) =>
+    FeatureObjectDTO(
       id: json['id'] as int? ?? 0,
     );

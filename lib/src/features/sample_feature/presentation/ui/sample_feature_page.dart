@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
 import 'package:template_app/src/core/state/view_state.dart';
-import 'package:template_app/src/features/sample_feature/domain/entity/entity.dart';
-import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_entity_state_notifier.dart';
-import 'package:template_app/src/features/sample_feature/presentation/ui/widgets/random_entity_request_button.dart';
+import 'package:template_app/src/features/sample_feature/domain/entity/feature_object.dart';
+import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_feature_object_state_notifier.dart';
+import 'package:template_app/src/features/sample_feature/presentation/ui/widgets/random_feature_object_request_button.dart';
 
 class SampleFeaturePage extends StatelessWidget {
   const SampleFeaturePage({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class SampleFeaturePage extends StatelessWidget {
           child: Consumer(
             builder: (_, ref, __) {
               // Listens errors
-              ref.listen<ViewState<Entity, Object>>(
-                randomEntityStateProvider,
+              ref.listen<ViewState<FeatureObject, Object>>(
+                randomFeatureObjectStateProvider,
                 (_, state) {
                   state.whenOrNull(
                     error: (e, _) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e'))),
@@ -27,7 +27,7 @@ class SampleFeaturePage extends StatelessWidget {
                 },
               );
               // Builds state widget
-              final state = ref.watch(randomEntityStateProvider);
+              final state = ref.watch(randomFeatureObjectStateProvider);
               
               return state.when<Widget>(
                 initial: () => Container(),
@@ -42,12 +42,12 @@ class SampleFeaturePage extends StatelessWidget {
     );
   }
 
-  Widget _buildData(BuildContext context, Entity data) {
+  Widget _buildData(BuildContext context, FeatureObject data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Random entity (ID: ${data.id})'),
-        RandomEntityRequestButton(message: S.of(context).randomize),
+        RandomFeatureObjectRequestButton(message: S.of(context).randomize),
       ],
     );
   }
@@ -57,7 +57,7 @@ class SampleFeaturePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Error: $error'),
-        RandomEntityRequestButton(message: S.of(context).tryAgain),
+        RandomFeatureObjectRequestButton(message: S.of(context).tryAgain),
       ],
     );
   }

@@ -17,9 +17,9 @@ class _$SampleFeatureService extends SampleFeatureService {
   final definitionType = SampleFeatureService;
 
   @override
-  Future<Response<Model>> getRandomModel() {
+  Future<Response<FeatureObjectDTO>> getRandomFeatureObject() {
     final $url = '/animals/rand';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<Model, Model>($request);
+    return client.send<FeatureObjectDTO, FeatureObjectDTO>($request);
   }
 }

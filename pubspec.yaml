@@ -21,10 +21,8 @@ dependencies:
 
   # Serialization
   json_annotation: ^4.4.0
-  built_value: ^8.1.4
 
   # Networking
-  dio: ^4.0.4
   chopper: ^4.0.5
 
   # Logging
@@ -45,7 +43,6 @@ dev_dependencies:
   # Code generation 
   build_runner: ^2.1.7 # Code generation support
   json_serializable: ^6.1.4 # Serialization
-  built_value_generator: ^8.1.4 # Serialization
   chopper_generator: ^4.0.5 # Networking
   freezed: ^1.1.1 # Data classes
 

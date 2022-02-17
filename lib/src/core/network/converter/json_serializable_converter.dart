@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:chopper/chopper.dart';
+import 'package:flutter/foundation.dart';
 
 typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
 
-class JsonSerializableConverter extends JsonConverter {
+class JsonSerializableConverter implements Converter {
   const JsonSerializableConverter({required this.factories});
   final Map<Type, JsonFactory> factories;
+  final _jsonConverter = const JsonConverter();
 
   T? _decodeMap<T>(Map<String, dynamic> values) {
     /// Get jsonFactory using Type parameters
@@ -14,7 +18,7 @@ class JsonSerializableConverter extends JsonConverter {
       /// throw serializer not found error;
       return null;
     }
-    
+
     return jsonFactory(values);
   }
 
@@ -28,16 +32,21 @@ class JsonSerializableConverter extends JsonConverter {
   }
 
   @override
-  Response<ResultType> convertResponse<ResultType, Item>(Response response) {
-    // Uses [JsonConverter] to decode json
-    final jsonRes = super.convertResponse(response);
+  Future<Response<ResultType>> convertResponse<ResultType, Item>(Response response) async {
+    return compute<void, Response<ResultType>>(
+      (_) async {
+        final jsonRes = _jsonConverter.convertResponse(response);
 
-    return jsonRes.copyWith<ResultType>(body: _decode<Item>(jsonRes.body));
+        return jsonRes.copyWith<ResultType>(body: _decode<Item>(jsonRes.body));
+      },
+      {},
+    );
   }
 
   @override
-  // all objects should implements toJson method
-  Request convertRequest(Request request) => super.convertRequest(request);
+  FutureOr<Request> convertRequest(Request request) {
+    return _jsonConverter.convertRequest(request);
+  }
 
   // TODO: explore
   // Response convertError<ResultType, Item>(Response response) {
