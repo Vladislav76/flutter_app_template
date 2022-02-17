@@ -14,6 +14,7 @@ class JsonSerializableConverter extends JsonConverter {
       /// throw serializer not found error;
       return null;
     }
+    
     return jsonFactory(values);
   }
 
@@ -22,6 +23,7 @@ class JsonSerializableConverter extends JsonConverter {
   dynamic _decode<T>(dynamic entity) {
     if (entity is Iterable) return _decodeList<T>(entity);
     if (entity is Map<String, dynamic>) return _decodeMap<T>(entity);
+
     return entity;
   }
 
@@ -29,6 +31,7 @@ class JsonSerializableConverter extends JsonConverter {
   Response<ResultType> convertResponse<ResultType, Item>(Response response) {
     // Uses [JsonConverter] to decode json
     final jsonRes = super.convertResponse(response);
+
     return jsonRes.copyWith<ResultType>(body: _decode<Item>(jsonRes.body));
   }
 

@@ -14,6 +14,7 @@ class HttpClientBuilder {
     client.interceptors.addAll([
       LoggingInterceptor(logger: DefaultLogger()),
     ]);
+    
     return client;
   }
 }

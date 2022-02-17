@@ -28,6 +28,7 @@ class SampleFeaturePage extends StatelessWidget {
               );
               // Builds state widget
               final state = ref.watch(randomEntityStateProvider);
+              
               return state.when<Widget>(
                 initial: () => Container(),
                 loading: () => const CircularProgressIndicator(),

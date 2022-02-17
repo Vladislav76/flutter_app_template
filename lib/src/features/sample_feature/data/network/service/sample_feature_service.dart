@@ -22,6 +22,7 @@ abstract class SampleFeatureService extends ChopperService implements SampleFeat
         },
       ),
     );
+    
     return _$SampleFeatureService(client);
   }
 

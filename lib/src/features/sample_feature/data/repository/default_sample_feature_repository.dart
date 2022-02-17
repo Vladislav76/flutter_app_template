@@ -7,6 +7,7 @@ import 'package:template_app/src/features/sample_feature/domain/repository/sampl
 
 final sampleFeatureRepositoryProvider = Provider<SampleFeatureRepository>((ref) {
   final service = SampleFeatureService.createDefault();
+  
   return DefaultSampleFeatureRepository(service: service);
 });
 
@@ -21,6 +22,7 @@ class DefaultSampleFeatureRepository implements SampleFeatureRepository {
     final response = await _service.getRandomModel();
     final model = response.body;
     if (model == null) throw Exception('Null data fetched from the network');
+    
     return const ModelToEntityMapper().map(model);
   }
 }

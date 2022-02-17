@@ -10,8 +10,10 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  plugins:
+    - dart_code_metrics
   exclude:
-    - "lib/generated"
+    - "lib/generated/**"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/*.chopper.dart"
@@ -36,6 +38,37 @@ linter:
     avoid_empty_else: true
     avoid_relative_lib_imports: true
     
-
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    lines-of-code: 100
+    maximum-nesting-level: 5
+    number-of-methods: 10
+    number-of-parameters: 4
+  metrics-exclude:
+    - test/**
+  rules:
+    # Common rules
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - prefer-first
+    - prefer-last
+    - no-equal-then-else
+    # Flutter specific
+    - avoid-border-all
+    - avoid-returning-widgets
+    - avoid-unnecessary-setstate
+    - avoid-wrapping-in-padding
+    - prefer-const-border-radius
+    - prefer-extracting-callbacks
+    - prefer-single-widget-per-file:
+        ignore-private-widgets: true
+  anti-patterns:
+    - long-method
+    - long-parameter-list
