@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
 import 'package:template_app/src/core/state/view_state.dart';
-import 'package:template_app/src/features/sample_feature/domain/entity/feature_object.dart';
-import 'package:template_app/src/features/sample_feature/presentation/state_notifier/random_feature_object_state_notifier.dart';
-import 'package:template_app/src/features/sample_feature/presentation/ui/widgets/random_feature_object_request_button.dart';
+import 'package:template_app/src/features/news_sections/domain/entity/news_section.dart';
+import 'package:template_app/src/features/news_sections/presentation/state_notifier/random_news_section_state_notifier.dart';
+import 'package:template_app/src/features/news_sections/presentation/ui/widgets/random_news_section_request_button.dart';
 
-class SampleFeaturePage extends StatelessWidget {
-  const SampleFeaturePage({Key? key}) : super(key: key);
-  static const routeName = '/sample_feature';
+class NewsSectionsPage extends StatelessWidget {
+  const NewsSectionsPage({Key? key}) : super(key: key);
+  static const routeName = '/news_sections';
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class SampleFeaturePage extends StatelessWidget {
           child: Consumer(
             builder: (_, ref, __) {
               // Listens errors
-              ref.listen<ViewState<FeatureObject, Object>>(
-                randomFeatureObjectStateProvider,
+              ref.listen<ViewState<NewsSection, Object>>(
+                randomNewsSectionStateProvider,
                 (_, state) {
                   state.whenOrNull(
                     error: (e, _) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e'))),
@@ -27,7 +27,7 @@ class SampleFeaturePage extends StatelessWidget {
                 },
               );
               // Builds state widget
-              final state = ref.watch(randomFeatureObjectStateProvider);
+              final state = ref.watch(randomNewsSectionStateProvider);
               
               return state.when<Widget>(
                 initial: () => Container(),
@@ -42,12 +42,12 @@ class SampleFeaturePage extends StatelessWidget {
     );
   }
 
-  Widget _buildData(BuildContext context, FeatureObject data) {
+  Widget _buildData(BuildContext context, NewsSection data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Random entity (ID: ${data.id})'),
-        RandomFeatureObjectRequestButton(message: S.of(context).randomize),
+        RandomNewsSectionRequestButton(message: S.of(context).randomize),
       ],
     );
   }
@@ -57,7 +57,7 @@ class SampleFeaturePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Error: $error'),
-        RandomFeatureObjectRequestButton(message: S.of(context).tryAgain),
+        RandomNewsSectionRequestButton(message: S.of(context).tryAgain),
       ],
     );
   }

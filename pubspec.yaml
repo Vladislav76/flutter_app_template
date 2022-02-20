@@ -34,6 +34,10 @@ dependencies:
   # Data classes
   freezed_annotation: ^1.1.0
 
+  # Persistence
+  # Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
+  flutter_secure_storage: ^5.0.2
+
 # Development packages
 dev_dependencies:
   # Testing

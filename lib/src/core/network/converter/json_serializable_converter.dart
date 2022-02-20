@@ -10,6 +10,23 @@ class JsonSerializableConverter implements Converter {
   final Map<Type, JsonFactory> factories;
   final _jsonConverter = const JsonConverter();
 
+  @override
+  FutureOr<Response<BodyType>> convertResponse<BodyType, InnerType>(Response response) async {
+    return compute<void, Response<BodyType>>(
+      (_) async {
+        final jsonConvertedResponse = _jsonConverter.convertResponse(response);
+
+        return jsonConvertedResponse.copyWith<BodyType>(body: _decode<InnerType>(jsonConvertedResponse.body));
+      },
+      {},
+    );
+  }
+
+  @override
+  FutureOr<Request> convertRequest(Request request) {
+    return _jsonConverter.convertRequest(request);
+  }
+
   T? _decodeMap<T>(Map<String, dynamic> values) {
     /// Get jsonFactory using Type parameters
     /// if not found or invalid, throw error or return null
@@ -26,34 +43,8 @@ class JsonSerializableConverter implements Converter {
 
   dynamic _decode<T>(dynamic entity) {
     if (entity is Iterable) return _decodeList<T>(entity);
-    if (entity is Map<String, dynamic>) return _decodeMap<T>(entity);
+    if (entity is Map<String, dynamic>) return entity.containsKey('response') ? _decode<T>(entity['response']) : _decodeMap<T>(entity);
 
     return entity;
   }
-
-  @override
-  Future<Response<ResultType>> convertResponse<ResultType, Item>(Response response) async {
-    return compute<void, Response<ResultType>>(
-      (_) async {
-        final jsonRes = _jsonConverter.convertResponse(response);
-
-        return jsonRes.copyWith<ResultType>(body: _decode<Item>(jsonRes.body));
-      },
-      {},
-    );
-  }
-
-  @override
-  FutureOr<Request> convertRequest(Request request) {
-    return _jsonConverter.convertRequest(request);
-  }
-
-  // TODO: explore
-  // Response convertError<ResultType, Item>(Response response) {
-  //   // Uses [JsonConverter] to decode json
-  //   final jsonRes = super.convertError(response);
-  //   return jsonRes.copyWith<ResourceError>(
-  //     body: ResourceError.fromJsonFactory(jsonRes.body),
-  //   );
-  // }
 }
