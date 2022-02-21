@@ -60,6 +60,26 @@ class S {
     );
   }
 
+  /// `Authorize`
+  String get authorize {
+    return Intl.message(
+      'Authorize',
+      name: 'authorize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Randomize!`
   String get randomize {
     return Intl.message(

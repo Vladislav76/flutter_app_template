@@ -13,4 +13,7 @@ class DefaultTokenStorage implements TokenStorage {
 
   @override
   Future<void> writeAuthorizationToken(String token) => _storage.write(key: _authTokenKey, value: token);
+
+  @override
+  Future<void> clear() => _storage.deleteAll();
 }

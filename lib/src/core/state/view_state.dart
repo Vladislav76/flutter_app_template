@@ -4,6 +4,8 @@ part 'view_state.freezed.dart';
 
 @freezed
 class ViewState<T, E> with _$ViewState<T, E> {
+  static const void voidValue = {};
+
   const factory ViewState.initial() = InitialViewState;
   const factory ViewState.loading() = LoadingViewState;
   const factory ViewState.data(T data) = DataViewState;

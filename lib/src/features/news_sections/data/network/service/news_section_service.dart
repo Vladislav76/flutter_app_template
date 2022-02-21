@@ -3,7 +3,6 @@ import 'package:template_app/src/core/network/converter/json_serializable_conver
 import 'package:template_app/src/core/network/converter/default_error_converter.dart';
 import 'package:template_app/src/core/network/interceptor/default_authenticator.dart';
 import 'package:template_app/src/core/network/interceptor/substitute_auth_token_interceptor.dart';
-import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/core/persistence/token_storage.dart';
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_dto.dart';
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_response_dto.dart';

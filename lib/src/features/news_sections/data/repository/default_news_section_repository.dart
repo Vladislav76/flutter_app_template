@@ -7,21 +7,20 @@ import 'package:template_app/src/features/news_sections/domain/entity/news_secti
 import 'package:template_app/src/features/news_sections/domain/repository/news_section_repository.dart';
 
 final newsSectionRepositoryProvider = Provider<NewsSectionRepository>((ref) {
-  final tokenStorage = ref.read(tokenStorageProvider);
-  final service = NewsSectionService.create(tokenStorage: tokenStorage);
-
-  return DefaultNewsSectionRepository(service: service);
+  return DefaultNewsSectionRepository(
+    service: NewsSectionService.create(
+      tokenStorage: ref.read(tokenStorageProvider),
+    ),
+  );
 });
 
 class DefaultNewsSectionRepository implements NewsSectionRepository {
-  DefaultNewsSectionRepository({
-    required NewsSectionServiceApi service,
-  }) : _service = service;
-  final NewsSectionServiceApi _service;
+  const DefaultNewsSectionRepository({required this.service});
+  final NewsSectionServiceApi service;
 
   @override
   Future<List<NewsSection>> getNewsSections() async {
-    final response = await _service.getNewsSections();
+    final response = await service.getNewsSections();
     final data = response.body;
     if (data == null) throw Exception('Null data fetched from the network');
 

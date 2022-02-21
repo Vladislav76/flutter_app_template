@@ -1,5 +1,7 @@
 {
     "appTitle": "Template App",
+    "authorize": "Authorize",
+    "logout": "Logout",
     "randomize": "Randomize!",
     "tryAgain": "Try again"
 }

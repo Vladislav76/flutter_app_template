@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:template_app/generated/l10n.dart';
+import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/news_sections_page.dart';
 import 'package:template_app/src/settings/settings_controller.dart';
 import 'package:template_app/src/settings/settings_view.dart';
@@ -71,8 +72,10 @@ class TemplateApp extends StatelessWidget {
           case SettingsView.routeName:
             return SettingsView(controller: settingsController);
           case NewsSectionsPage.routeName:
-          default:
             return const NewsSectionsPage();
+          case AuthPage.routeName:
+          default:
+            return const AuthPage();
         }
       },
     );

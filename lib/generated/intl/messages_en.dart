@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Template App"),
+        "authorize": MessageLookupByLibrary.simpleMessage("Authorize"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "randomize": MessageLookupByLibrary.simpleMessage("Randomize!"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again")
       };

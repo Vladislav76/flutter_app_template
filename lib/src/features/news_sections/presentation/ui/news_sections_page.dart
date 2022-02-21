@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
 import 'package:template_app/src/core/state/view_state.dart';
+import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
+import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
+import 'package:template_app/src/features/auth/presentation/ui/widgets/logout_button.dart';
 import 'package:template_app/src/features/news_sections/domain/entity/news_section.dart';
 import 'package:template_app/src/features/news_sections/presentation/state_notifier/random_news_section_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/widgets/random_news_section_request_button.dart';
@@ -26,14 +29,22 @@ class NewsSectionsPage extends StatelessWidget {
                   );
                 },
               );
+
+              // Listens auth state
+              ref.listen<ViewState<void, Object>>(authStateProvider, (_, state) {
+                state.whenOrNull(
+                  data: (_) => Navigator.of(context).restorablePushNamedAndRemoveUntil(AuthPage.routeName, (route) => false),
+                );
+              });
+
               // Builds state widget
               final state = ref.watch(randomNewsSectionStateProvider);
-              
+
               return state.when<Widget>(
                 initial: () => Container(),
                 loading: () => const CircularProgressIndicator(),
-                data: (data) => _buildData(context, data),
-                error: (error, lastData) => (lastData != null) ? _buildData(context, lastData) : _buildError(context, error),
+                data: (data) => _buildData(context, ref, data),
+                error: (error, lastData) => (lastData != null) ? _buildData(context, ref, lastData) : _buildError(context, error),
               );
             },
           ),
@@ -42,12 +53,13 @@ class NewsSectionsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildData(BuildContext context, NewsSection data) {
+  Widget _buildData(BuildContext context, WidgetRef ref, NewsSection data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Random entity (ID: ${data.id})'),
         RandomNewsSectionRequestButton(message: S.of(context).randomize),
+        const LogoutButton(),
       ],
     );
   }
