@@ -32,10 +32,10 @@ class _$ViewStateTearOff {
     );
   }
 
-  ErrorViewState<T, E> error<T, E>(E error, T? lastData) {
+  ErrorViewState<T, E> error<T, E>(E error, {T? lastData}) {
     return ErrorViewState<T, E>(
       error,
-      lastData,
+      lastData: lastData,
     );
   }
 }
@@ -523,7 +523,7 @@ class _$ErrorViewStateCopyWithImpl<T, E, $Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as E,
-      lastData == freezed
+      lastData: lastData == freezed
           ? _value.lastData
           : lastData // ignore: cast_nullable_to_non_nullable
               as T?,
@@ -534,7 +534,7 @@ class _$ErrorViewStateCopyWithImpl<T, E, $Res>
 /// @nodoc
 
 class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
-  const _$ErrorViewState(this.error, this.lastData);
+  const _$ErrorViewState(this.error, {this.lastData});
 
   @override
   final E error;
@@ -643,7 +643,7 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
 }
 
 abstract class ErrorViewState<T, E> implements ViewState<T, E> {
-  const factory ErrorViewState(E error, T? lastData) = _$ErrorViewState<T, E>;
+  const factory ErrorViewState(E error, {T? lastData}) = _$ErrorViewState<T, E>;
 
   E get error;
   T? get lastData;

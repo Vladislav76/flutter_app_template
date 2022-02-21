@@ -20,7 +20,7 @@ class AuthStateNotifier extends StateNotifier<ViewState<void, Object>> {
       state = const ViewState.data(ViewState.voidValue);
       state = const ViewState.initial();
     } catch (e) {
-      state = ViewState.error(e, null);
+      state = ViewState.error(e);
     }
   }
 
@@ -31,7 +31,7 @@ class AuthStateNotifier extends StateNotifier<ViewState<void, Object>> {
       state = const ViewState.data(ViewState.voidValue);
       state = const ViewState.initial();
     } catch (e) {
-      state = ViewState.error(e, null);
+      state = ViewState.error(e);
     }
   }
 }

@@ -21,7 +21,7 @@ class RandomNewsSectionStateNotifier extends StateNotifier<ViewState<NewsSection
       authStateProvider,
       (_, authState) => authState.whenOrNull(
         loading: () => state = const ViewState.loading(),
-        error: (e, _) => state = ViewState.error(e, _lastData),
+        error: (e, _) => state = ViewState.error(e, lastData: _lastData),
       ),
     );
     randomize();
@@ -37,7 +37,7 @@ class RandomNewsSectionStateNotifier extends StateNotifier<ViewState<NewsSection
       _lastData = data.first;
       state = ViewState.data(data.first);
     } catch (e) {
-      state = ViewState.error(e, _lastData);
+      state = ViewState.error(e, lastData: _lastData);
     }
   }
 }
