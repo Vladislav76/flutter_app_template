@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/core/persistence/default_token_storage.dart';
+import 'package:template_app/src/app/default_chopper_client.dart';
 import 'package:template_app/src/features/news_sections/data/mapping/news_section_dto_mapper.dart';
 import 'package:template_app/src/features/news_sections/data/network/service/news_section_service.dart';
 import 'package:template_app/src/features/news_sections/data/network/service/news_section_service_api.dart';
@@ -9,7 +9,7 @@ import 'package:template_app/src/features/news_sections/domain/repository/news_s
 final newsSectionRepositoryProvider = Provider<NewsSectionRepository>((ref) {
   return DefaultNewsSectionRepository(
     service: NewsSectionService.create(
-      tokenStorage: ref.read(tokenStorageProvider),
+      client: ref.read(defaultChopperClientProvider),
     ),
   );
 });

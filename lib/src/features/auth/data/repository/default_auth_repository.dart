@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template_app/src/app/default_chopper_client.dart';
 import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/core/persistence/token_storage.dart';
 import 'package:template_app/src/features/auth/data/network/service/auth_service_api.dart';
@@ -7,9 +8,7 @@ import 'package:template_app/src/features/auth/domain/repository/auth_repository
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return DefaultAuthRepository(
-    service: DemoAuthService(
-      tokenStorage: ref.read(tokenStorageProvider),
-    ),
+    service: DemoAuthService.create(client: ref.read(defaultChopperClientProvider)),
     tokenStorage: ref.read(tokenStorageProvider),
   );
 });

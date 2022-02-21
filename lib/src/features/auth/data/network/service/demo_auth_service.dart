@@ -1,11 +1,14 @@
 import 'package:chopper/chopper.dart';
 import 'package:http/http.dart' as http;
-import 'package:template_app/src/core/persistence/token_storage.dart';
 import 'package:template_app/src/features/auth/data/network/service/auth_service_api.dart';
 
-class DemoAuthService implements AuthServiceApi {
-  const DemoAuthService({required this.tokenStorage});
-  final TokenStorage tokenStorage;
+part 'demo_auth_service.chopper.dart';
+
+@ChopperApi()
+abstract class DemoAuthService extends ChopperService implements AuthServiceApi {
+  DemoAuthService();
+
+  factory DemoAuthService.create({ChopperClient? client}) => _$DemoAuthService(client);
 
   @override
   Future<Response<String>> loginViaEmail() async {
@@ -29,5 +32,10 @@ class DemoAuthService implements AuthServiceApi {
   Future<Response> register() async {
     // TODO: implement register
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Response<String>> refreshToken() async {
+    return Response(http.Response('', 200), '9b8fb0d3-347e-421b-a984-e6e6937a4fcd');
   }
 }

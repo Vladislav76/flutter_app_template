@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
+import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
 import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
@@ -60,6 +61,10 @@ class NewsSectionsPage extends StatelessWidget {
         Text('Random entity (ID: ${data.id})'),
         RandomNewsSectionRequestButton(message: S.of(context).randomize),
         const LogoutButton(),
+        ElevatedButton(
+          onPressed: () => ref.read(tokenStorageProvider).writeAuthorizationToken('fake-token'),
+          child: const Text('Clear storage'),
+        ),
       ],
     );
   }
