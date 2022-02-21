@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template_app/src/core/architecture/default_state_notifier.dart';
 import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/core/persistence/token_storage.dart';
 import 'package:template_app/src/core/state/view_state.dart';
@@ -12,23 +13,23 @@ final initialAppStateProvider = StateNotifierProvider<InitialAppStateNotifier, V
   );
 });
 
-class InitialAppStateNotifier extends StateNotifier<ViewState<bool, Object>> {
+class InitialAppStateNotifier extends DefaultStateNotifier<bool> {
   InitialAppStateNotifier({
     required this.repository,
     required this.tokenStorage,
-  }) : super(const ViewState.initial()) {
+  }) {
     _initialize();
   }
   final AuthRepository repository;
   final TokenStorage tokenStorage;
 
   void _initialize() async {
-    state = const ViewState.loading();
-    try {
-      final authToken = await tokenStorage.readAuthorizationToken();
-      state = (authToken != null) ? const ViewState.data(true) : const ViewState.data(false);
-    } catch (e) {
-      state = ViewState.error(e);
-    }
+    tryAction(
+      action: () async {
+        final authToken = await tokenStorage.readAuthorizationToken();
+
+        return authToken != null;
+      },
+    );
   }
 }

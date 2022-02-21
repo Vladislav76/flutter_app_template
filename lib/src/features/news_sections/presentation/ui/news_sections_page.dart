@@ -62,7 +62,7 @@ class NewsSectionsPage extends StatelessWidget {
         RandomNewsSectionRequestButton(message: S.of(context).randomize),
         const LogoutButton(),
         ElevatedButton(
-          onPressed: () => ref.read(tokenStorageProvider).writeAuthorizationToken('fake-token'),
+          onPressed: () => ref.read(tokenStorageProvider).clear(),
           child: const Text('Clear storage'),
         ),
       ],
@@ -75,6 +75,7 @@ class NewsSectionsPage extends StatelessWidget {
       children: [
         Text('Error: $error'),
         RandomNewsSectionRequestButton(message: S.of(context).tryAgain),
+        const LogoutButton(),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template_app/src/core/architecture/default_state_notifier.dart';
 import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/data/repository/default_news_section_repository.dart';
@@ -12,32 +13,30 @@ final randomNewsSectionStateProvider = StateNotifierProvider.autoDispose<RandomN
   );
 });
 
-class RandomNewsSectionStateNotifier extends StateNotifier<ViewState<NewsSection, Object>> {
+class RandomNewsSectionStateNotifier extends DefaultStateNotifier<NewsSection> {
   RandomNewsSectionStateNotifier({
     required this.repository,
     required this.authStateNotifierRef,
-  }) : super(const ViewState.initial()) {
+  }) {
     authStateNotifierRef.listen<ViewState<void, Object>>(
       authStateProvider,
       (_, authState) => authState.whenOrNull(
         loading: () => state = const ViewState.loading(),
-        error: (e, _) => state = ViewState.error(e, lastData: _lastData),
+        error: (e, _) => state = ViewState.error(e, lastData: lastData),
       ),
     );
     randomize();
   }
   final NewsSectionRepository repository;
   final AutoDisposeStateNotifierProviderRef authStateNotifierRef;
-  NewsSection? _lastData;
 
   void randomize() async {
-    state = const ViewState.loading();
-    try {
-      final data = await repository.getNewsSections();
-      _lastData = data.first;
-      state = ViewState.data(data.first);
-    } catch (e) {
-      state = ViewState.error(e, lastData: _lastData);
-    }
+    tryAction(
+      action: () async {
+        final data = await repository.getNewsSections();
+
+        return data.first;
+      },
+    );
   }
 }
