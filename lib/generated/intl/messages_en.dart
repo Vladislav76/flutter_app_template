@@ -24,8 +24,21 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Template App"),
         "authorize": MessageLookupByLibrary.simpleMessage("Authorize"),
+        "badRequestNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Failed to handle network request, please, try again later"),
+        "internetConnectionNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Failed to load data, please, check your internet connection"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Failed to find specified network resource, please, try again later"),
         "randomize": MessageLookupByLibrary.simpleMessage("Randomize!"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Try again")
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+        "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Access denied, you\'re not authorized"),
+        "unknownDataError": MessageLookupByLibrary.simpleMessage(
+            "Unknown data error, please, try again later"),
+        "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+        "unknownNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Unknown network error, please, try again later")
       };
 }

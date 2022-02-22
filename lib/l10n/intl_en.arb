@@ -3,5 +3,12 @@
     "authorize": "Authorize",
     "logout": "Logout",
     "randomize": "Randomize!",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "badRequestNetworkError": "Failed to handle network request, please, try again later",
+    "notFoundNetworkError": "Failed to find specified network resource, please, try again later",
+    "unathorizedNetworkError": "Access denied, you're not authorized",
+    "internetConnectionNetworkError": "Failed to load data, please, check your internet connection",
+    "unknownNetworkError": "Unknown network error, please, try again later",
+    "unknownDataError": "Unknown data error, please, try again later",
+    "unknownError": "Unknown error"
 }

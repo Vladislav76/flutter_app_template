@@ -18,22 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ViewStateTearOff {
   const _$ViewStateTearOff();
 
-  InitialViewState<T, E> initial<T, E>() {
-    return InitialViewState<T, E>();
+  _Initial<T, E> initial<T, E>() {
+    return _Initial<T, E>();
   }
 
-  LoadingViewState<T, E> loading<T, E>() {
-    return LoadingViewState<T, E>();
+  _Loading<T, E> loading<T, E>() {
+    return _Loading<T, E>();
   }
 
-  DataViewState<T, E> data<T, E>(T data) {
-    return DataViewState<T, E>(
+  _Data<T, E> data<T, E>(T data) {
+    return _Data<T, E>(
       data,
     );
   }
 
-  ErrorViewState<T, E> error<T, E>(E error, {T? lastData}) {
-    return ErrorViewState<T, E>(
+  _Error<T, E> error<T, E>(E error, {T? lastData}) {
+    return _Error<T, E>(
       error,
       lastData: lastData,
     );
@@ -72,26 +72,26 @@ mixin _$ViewState<T, E> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialViewState<T, E> value) initial,
-    required TResult Function(LoadingViewState<T, E> value) loading,
-    required TResult Function(DataViewState<T, E> value) data,
-    required TResult Function(ErrorViewState<T, E> value) error,
+    required TResult Function(_Initial<T, E> value) initial,
+    required TResult Function(_Loading<T, E> value) loading,
+    required TResult Function(_Data<T, E> value) data,
+    required TResult Function(_Error<T, E> value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,28 +115,28 @@ class _$ViewStateCopyWithImpl<T, E, $Res>
 }
 
 /// @nodoc
-abstract class $InitialViewStateCopyWith<T, E, $Res> {
-  factory $InitialViewStateCopyWith(InitialViewState<T, E> value,
-          $Res Function(InitialViewState<T, E>) then) =
-      _$InitialViewStateCopyWithImpl<T, E, $Res>;
+abstract class _$InitialCopyWith<T, E, $Res> {
+  factory _$InitialCopyWith(
+          _Initial<T, E> value, $Res Function(_Initial<T, E>) then) =
+      __$InitialCopyWithImpl<T, E, $Res>;
 }
 
 /// @nodoc
-class _$InitialViewStateCopyWithImpl<T, E, $Res>
+class __$InitialCopyWithImpl<T, E, $Res>
     extends _$ViewStateCopyWithImpl<T, E, $Res>
-    implements $InitialViewStateCopyWith<T, E, $Res> {
-  _$InitialViewStateCopyWithImpl(InitialViewState<T, E> _value,
-      $Res Function(InitialViewState<T, E>) _then)
-      : super(_value, (v) => _then(v as InitialViewState<T, E>));
+    implements _$InitialCopyWith<T, E, $Res> {
+  __$InitialCopyWithImpl(
+      _Initial<T, E> _value, $Res Function(_Initial<T, E>) _then)
+      : super(_value, (v) => _then(v as _Initial<T, E>));
 
   @override
-  InitialViewState<T, E> get _value => super._value as InitialViewState<T, E>;
+  _Initial<T, E> get _value => super._value as _Initial<T, E>;
 }
 
 /// @nodoc
 
-class _$InitialViewState<T, E> implements InitialViewState<T, E> {
-  const _$InitialViewState();
+class _$_Initial<T, E> implements _Initial<T, E> {
+  const _$_Initial();
 
   @override
   String toString() {
@@ -146,7 +146,7 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialViewState<T, E>);
+        (other.runtimeType == runtimeType && other is _Initial<T, E>);
   }
 
   @override
@@ -192,10 +192,10 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialViewState<T, E> value) initial,
-    required TResult Function(LoadingViewState<T, E> value) loading,
-    required TResult Function(DataViewState<T, E> value) data,
-    required TResult Function(ErrorViewState<T, E> value) error,
+    required TResult Function(_Initial<T, E> value) initial,
+    required TResult Function(_Loading<T, E> value) loading,
+    required TResult Function(_Data<T, E> value) data,
+    required TResult Function(_Error<T, E> value) error,
   }) {
     return initial(this);
   }
@@ -203,10 +203,10 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
   }) {
     return initial?.call(this);
   }
@@ -214,10 +214,10 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -227,33 +227,33 @@ class _$InitialViewState<T, E> implements InitialViewState<T, E> {
   }
 }
 
-abstract class InitialViewState<T, E> implements ViewState<T, E> {
-  const factory InitialViewState() = _$InitialViewState<T, E>;
+abstract class _Initial<T, E> implements ViewState<T, E> {
+  const factory _Initial() = _$_Initial<T, E>;
 }
 
 /// @nodoc
-abstract class $LoadingViewStateCopyWith<T, E, $Res> {
-  factory $LoadingViewStateCopyWith(LoadingViewState<T, E> value,
-          $Res Function(LoadingViewState<T, E>) then) =
-      _$LoadingViewStateCopyWithImpl<T, E, $Res>;
+abstract class _$LoadingCopyWith<T, E, $Res> {
+  factory _$LoadingCopyWith(
+          _Loading<T, E> value, $Res Function(_Loading<T, E>) then) =
+      __$LoadingCopyWithImpl<T, E, $Res>;
 }
 
 /// @nodoc
-class _$LoadingViewStateCopyWithImpl<T, E, $Res>
+class __$LoadingCopyWithImpl<T, E, $Res>
     extends _$ViewStateCopyWithImpl<T, E, $Res>
-    implements $LoadingViewStateCopyWith<T, E, $Res> {
-  _$LoadingViewStateCopyWithImpl(LoadingViewState<T, E> _value,
-      $Res Function(LoadingViewState<T, E>) _then)
-      : super(_value, (v) => _then(v as LoadingViewState<T, E>));
+    implements _$LoadingCopyWith<T, E, $Res> {
+  __$LoadingCopyWithImpl(
+      _Loading<T, E> _value, $Res Function(_Loading<T, E>) _then)
+      : super(_value, (v) => _then(v as _Loading<T, E>));
 
   @override
-  LoadingViewState<T, E> get _value => super._value as LoadingViewState<T, E>;
+  _Loading<T, E> get _value => super._value as _Loading<T, E>;
 }
 
 /// @nodoc
 
-class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
-  const _$LoadingViewState();
+class _$_Loading<T, E> implements _Loading<T, E> {
+  const _$_Loading();
 
   @override
   String toString() {
@@ -263,7 +263,7 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoadingViewState<T, E>);
+        (other.runtimeType == runtimeType && other is _Loading<T, E>);
   }
 
   @override
@@ -309,10 +309,10 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialViewState<T, E> value) initial,
-    required TResult Function(LoadingViewState<T, E> value) loading,
-    required TResult Function(DataViewState<T, E> value) data,
-    required TResult Function(ErrorViewState<T, E> value) error,
+    required TResult Function(_Initial<T, E> value) initial,
+    required TResult Function(_Loading<T, E> value) loading,
+    required TResult Function(_Data<T, E> value) data,
+    required TResult Function(_Error<T, E> value) error,
   }) {
     return loading(this);
   }
@@ -320,10 +320,10 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
   }) {
     return loading?.call(this);
   }
@@ -331,10 +331,10 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -344,34 +344,32 @@ class _$LoadingViewState<T, E> implements LoadingViewState<T, E> {
   }
 }
 
-abstract class LoadingViewState<T, E> implements ViewState<T, E> {
-  const factory LoadingViewState() = _$LoadingViewState<T, E>;
+abstract class _Loading<T, E> implements ViewState<T, E> {
+  const factory _Loading() = _$_Loading<T, E>;
 }
 
 /// @nodoc
-abstract class $DataViewStateCopyWith<T, E, $Res> {
-  factory $DataViewStateCopyWith(
-          DataViewState<T, E> value, $Res Function(DataViewState<T, E>) then) =
-      _$DataViewStateCopyWithImpl<T, E, $Res>;
+abstract class _$DataCopyWith<T, E, $Res> {
+  factory _$DataCopyWith(_Data<T, E> value, $Res Function(_Data<T, E>) then) =
+      __$DataCopyWithImpl<T, E, $Res>;
   $Res call({T data});
 }
 
 /// @nodoc
-class _$DataViewStateCopyWithImpl<T, E, $Res>
+class __$DataCopyWithImpl<T, E, $Res>
     extends _$ViewStateCopyWithImpl<T, E, $Res>
-    implements $DataViewStateCopyWith<T, E, $Res> {
-  _$DataViewStateCopyWithImpl(
-      DataViewState<T, E> _value, $Res Function(DataViewState<T, E>) _then)
-      : super(_value, (v) => _then(v as DataViewState<T, E>));
+    implements _$DataCopyWith<T, E, $Res> {
+  __$DataCopyWithImpl(_Data<T, E> _value, $Res Function(_Data<T, E>) _then)
+      : super(_value, (v) => _then(v as _Data<T, E>));
 
   @override
-  DataViewState<T, E> get _value => super._value as DataViewState<T, E>;
+  _Data<T, E> get _value => super._value as _Data<T, E>;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(DataViewState<T, E>(
+    return _then(_Data<T, E>(
       data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -382,8 +380,8 @@ class _$DataViewStateCopyWithImpl<T, E, $Res>
 
 /// @nodoc
 
-class _$DataViewState<T, E> implements DataViewState<T, E> {
-  const _$DataViewState(this.data);
+class _$_Data<T, E> implements _Data<T, E> {
+  const _$_Data(this.data);
 
   @override
   final T data;
@@ -397,7 +395,7 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DataViewState<T, E> &&
+            other is _Data<T, E> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -407,8 +405,8 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
 
   @JsonKey(ignore: true)
   @override
-  $DataViewStateCopyWith<T, E, DataViewState<T, E>> get copyWith =>
-      _$DataViewStateCopyWithImpl<T, E, DataViewState<T, E>>(this, _$identity);
+  _$DataCopyWith<T, E, _Data<T, E>> get copyWith =>
+      __$DataCopyWithImpl<T, E, _Data<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -450,10 +448,10 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialViewState<T, E> value) initial,
-    required TResult Function(LoadingViewState<T, E> value) loading,
-    required TResult Function(DataViewState<T, E> value) data,
-    required TResult Function(ErrorViewState<T, E> value) error,
+    required TResult Function(_Initial<T, E> value) initial,
+    required TResult Function(_Loading<T, E> value) loading,
+    required TResult Function(_Data<T, E> value) data,
+    required TResult Function(_Error<T, E> value) error,
   }) {
     return data(this);
   }
@@ -461,10 +459,10 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
   }) {
     return data?.call(this);
   }
@@ -472,10 +470,10 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -485,40 +483,39 @@ class _$DataViewState<T, E> implements DataViewState<T, E> {
   }
 }
 
-abstract class DataViewState<T, E> implements ViewState<T, E> {
-  const factory DataViewState(T data) = _$DataViewState<T, E>;
+abstract class _Data<T, E> implements ViewState<T, E> {
+  const factory _Data(T data) = _$_Data<T, E>;
 
   T get data;
   @JsonKey(ignore: true)
-  $DataViewStateCopyWith<T, E, DataViewState<T, E>> get copyWith =>
+  _$DataCopyWith<T, E, _Data<T, E>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ErrorViewStateCopyWith<T, E, $Res> {
-  factory $ErrorViewStateCopyWith(ErrorViewState<T, E> value,
-          $Res Function(ErrorViewState<T, E>) then) =
-      _$ErrorViewStateCopyWithImpl<T, E, $Res>;
+abstract class _$ErrorCopyWith<T, E, $Res> {
+  factory _$ErrorCopyWith(
+          _Error<T, E> value, $Res Function(_Error<T, E>) then) =
+      __$ErrorCopyWithImpl<T, E, $Res>;
   $Res call({E error, T? lastData});
 }
 
 /// @nodoc
-class _$ErrorViewStateCopyWithImpl<T, E, $Res>
+class __$ErrorCopyWithImpl<T, E, $Res>
     extends _$ViewStateCopyWithImpl<T, E, $Res>
-    implements $ErrorViewStateCopyWith<T, E, $Res> {
-  _$ErrorViewStateCopyWithImpl(
-      ErrorViewState<T, E> _value, $Res Function(ErrorViewState<T, E>) _then)
-      : super(_value, (v) => _then(v as ErrorViewState<T, E>));
+    implements _$ErrorCopyWith<T, E, $Res> {
+  __$ErrorCopyWithImpl(_Error<T, E> _value, $Res Function(_Error<T, E>) _then)
+      : super(_value, (v) => _then(v as _Error<T, E>));
 
   @override
-  ErrorViewState<T, E> get _value => super._value as ErrorViewState<T, E>;
+  _Error<T, E> get _value => super._value as _Error<T, E>;
 
   @override
   $Res call({
     Object? error = freezed,
     Object? lastData = freezed,
   }) {
-    return _then(ErrorViewState<T, E>(
+    return _then(_Error<T, E>(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -533,8 +530,8 @@ class _$ErrorViewStateCopyWithImpl<T, E, $Res>
 
 /// @nodoc
 
-class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
-  const _$ErrorViewState(this.error, {this.lastData});
+class _$_Error<T, E> implements _Error<T, E> {
+  const _$_Error(this.error, {this.lastData});
 
   @override
   final E error;
@@ -550,7 +547,7 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ErrorViewState<T, E> &&
+            other is _Error<T, E> &&
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality().equals(other.lastData, lastData));
   }
@@ -563,9 +560,8 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
 
   @JsonKey(ignore: true)
   @override
-  $ErrorViewStateCopyWith<T, E, ErrorViewState<T, E>> get copyWith =>
-      _$ErrorViewStateCopyWithImpl<T, E, ErrorViewState<T, E>>(
-          this, _$identity);
+  _$ErrorCopyWith<T, E, _Error<T, E>> get copyWith =>
+      __$ErrorCopyWithImpl<T, E, _Error<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -607,10 +603,10 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialViewState<T, E> value) initial,
-    required TResult Function(LoadingViewState<T, E> value) loading,
-    required TResult Function(DataViewState<T, E> value) data,
-    required TResult Function(ErrorViewState<T, E> value) error,
+    required TResult Function(_Initial<T, E> value) initial,
+    required TResult Function(_Loading<T, E> value) loading,
+    required TResult Function(_Data<T, E> value) data,
+    required TResult Function(_Error<T, E> value) error,
   }) {
     return error(this);
   }
@@ -618,10 +614,10 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
   }) {
     return error?.call(this);
   }
@@ -629,10 +625,10 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialViewState<T, E> value)? initial,
-    TResult Function(LoadingViewState<T, E> value)? loading,
-    TResult Function(DataViewState<T, E> value)? data,
-    TResult Function(ErrorViewState<T, E> value)? error,
+    TResult Function(_Initial<T, E> value)? initial,
+    TResult Function(_Loading<T, E> value)? loading,
+    TResult Function(_Data<T, E> value)? data,
+    TResult Function(_Error<T, E> value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -642,12 +638,12 @@ class _$ErrorViewState<T, E> implements ErrorViewState<T, E> {
   }
 }
 
-abstract class ErrorViewState<T, E> implements ViewState<T, E> {
-  const factory ErrorViewState(E error, {T? lastData}) = _$ErrorViewState<T, E>;
+abstract class _Error<T, E> implements ViewState<T, E> {
+  const factory _Error(E error, {T? lastData}) = _$_Error<T, E>;
 
   E get error;
   T? get lastData;
   @JsonKey(ignore: true)
-  $ErrorViewStateCopyWith<T, E, ErrorViewState<T, E>> get copyWith =>
+  _$ErrorCopyWith<T, E, _Error<T, E>> get copyWith =>
       throw _privateConstructorUsedError;
 }

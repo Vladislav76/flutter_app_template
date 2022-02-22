@@ -99,6 +99,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Failed to handle network request, please, try again later`
+  String get badRequestNetworkError {
+    return Intl.message(
+      'Failed to handle network request, please, try again later',
+      name: 'badRequestNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to find specified network resource, please, try again later`
+  String get notFoundNetworkError {
+    return Intl.message(
+      'Failed to find specified network resource, please, try again later',
+      name: 'notFoundNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access denied, you're not authorized`
+  String get unathorizedNetworkError {
+    return Intl.message(
+      'Access denied, you\'re not authorized',
+      name: 'unathorizedNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load data, please, check your internet connection`
+  String get internetConnectionNetworkError {
+    return Intl.message(
+      'Failed to load data, please, check your internet connection',
+      name: 'internetConnectionNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown network error, please, try again later`
+  String get unknownNetworkError {
+    return Intl.message(
+      'Unknown network error, please, try again later',
+      name: 'unknownNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown data error, please, try again later`
+  String get unknownDataError {
+    return Intl.message(
+      'Unknown data error, please, try again later',
+      name: 'unknownDataError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

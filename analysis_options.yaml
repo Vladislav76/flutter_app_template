@@ -47,7 +47,7 @@ dart_code_metrics:
     lines-of-code: 100
     maximum-nesting-level: 5
     number-of-methods: 10
-    number-of-parameters: 4
+    number-of-parameters: 6
   metrics-exclude:
     - test/**
   rules:

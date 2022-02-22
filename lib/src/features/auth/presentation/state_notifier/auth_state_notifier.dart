@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/core/architecture/default_state_notifier.dart';
+import 'package:template_app/src/core/state/default_state_notifier.dart';
 import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/auth/data/repository/default_auth_repository.dart';
 import 'package:template_app/src/features/auth/domain/repository/auth_repository.dart';
@@ -15,8 +15,8 @@ class AuthStateNotifier extends DefaultStateNotifier<void> {
   final AuthRepository repository;
 
   void login() async {
-    final isSuccessful = await tryAction(
-      action: () => repository.loginViaEmail(email: 'email', password: 'password'),
+    final isSuccessful = await tryRequest(
+      request: () => repository.loginViaEmail(email: 'email', password: 'password'),
     );
     if (isSuccessful) {
       state = const ViewState.initial();
@@ -24,8 +24,8 @@ class AuthStateNotifier extends DefaultStateNotifier<void> {
   }
 
   void logout() async {
-    final isSuccessful = await tryAction(
-      action: () => repository.logout(),
+    final isSuccessful = await tryRequest(
+      request: () => repository.logout(),
     );
     if (isSuccessful) {
       state = const ViewState.initial();

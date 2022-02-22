@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/core/architecture/default_state_notifier.dart';
+import 'package:template_app/src/core/state/default_state_notifier.dart';
 import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/data/repository/default_news_section_repository.dart';
@@ -31,8 +31,8 @@ class RandomNewsSectionStateNotifier extends DefaultStateNotifier<NewsSection> {
   final AutoDisposeStateNotifierProviderRef authStateNotifierRef;
 
   void randomize() async {
-    tryAction(
-      action: () async {
+    tryRequest(
+      request: () async {
         final data = await repository.getNewsSections();
 
         return data.first;

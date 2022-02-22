@@ -25,8 +25,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle":
             MessageLookupByLibrary.simpleMessage("Шаблонное приложение"),
         "authorize": MessageLookupByLibrary.simpleMessage("Войти"),
+        "badRequestNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Не получилось обработать сетевой запрос, пожалуйста, повторите попытку позже"),
+        "internetConnectionNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Не получилось загрузить данные, пожалуйста, проверьте Интернет-соединение"),
         "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
+        "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Не получилось найти указанный сетевой ресурс, пожалуйста, повторите попытку позже"),
         "randomize": MessageLookupByLibrary.simpleMessage("Рандомизировать!"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Попровать снова")
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Попровать снова"),
+        "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Доступ запрещен, Вы не авторизованы"),
+        "unknownDataError": MessageLookupByLibrary.simpleMessage(
+            "Неизвстная ошибка данных, пожалуйста, повторите попытку позже"),
+        "unknownError":
+            MessageLookupByLibrary.simpleMessage("Неизвестная ошибка"),
+        "unknownNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Неизвестная сетевая ошибка, пожалуйста, повторите попытку позже")
       };
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
+import 'package:template_app/src/core/ui/default_loading_widget.dart';
+import 'package:template_app/src/core/state/default_state_listener.dart';
 import 'package:template_app/src/core/persistence/default_token_storage.dart';
-import 'package:template_app/src/core/state/view_state.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
 import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
 import 'package:template_app/src/features/auth/presentation/ui/widgets/logout_button.dart';
@@ -10,7 +11,7 @@ import 'package:template_app/src/features/news_sections/domain/entity/news_secti
 import 'package:template_app/src/features/news_sections/presentation/state_notifier/random_news_section_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/widgets/random_news_section_request_button.dart';
 
-class NewsSectionsPage extends StatelessWidget {
+class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
   const NewsSectionsPage({Key? key}) : super(key: key);
   static const routeName = '/news_sections';
 
@@ -21,32 +22,29 @@ class NewsSectionsPage extends StatelessWidget {
         child: Center(
           child: Consumer(
             builder: (_, ref, __) {
-              // Listens errors
-              ref.listen<ViewState<NewsSection, Object>>(
-                randomNewsSectionStateProvider,
-                (_, state) {
-                  state.whenOrNull(
-                    error: (e, _) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e'))),
-                  );
-                },
+              // Listens states
+              listenStates(
+                context: context,
+                ref: ref,
+                provider: randomNewsSectionStateProvider,
               );
 
-              // Listens auth state
-              ref.listen<ViewState<void, Object>>(authStateProvider, (_, state) {
-                state.whenOrNull(
-                  data: (_) => Navigator.of(context).restorablePushNamedAndRemoveUntil(AuthPage.routeName, (route) => false),
-                );
-              });
+              // Listens auth states
+              listenStates(
+                context: context,
+                ref: ref,
+                provider: authStateProvider,
+                enableErrorPopups: false,
+                onData: (_) => Navigator.of(context).restorablePushNamedAndRemoveUntil(AuthPage.routeName, (route) => false),
+              );
 
               // Builds state widget
-              final state = ref.watch(randomNewsSectionStateProvider);
-
-              return state.when<Widget>(
-                initial: () => Container(),
-                loading: () => const CircularProgressIndicator(),
-                data: (data) => _buildData(context, ref, data),
-                error: (error, lastData) => (lastData != null) ? _buildData(context, ref, lastData) : _buildError(context, error),
-              );
+              return ref.watch(randomNewsSectionStateProvider).when<Widget>(
+                    initial: () => Container(),
+                    loading: () => const DefaultLoadingWidget(),
+                    data: (data) => _buildData(context, ref, data),
+                    error: (error, lastData) => (lastData != null) ? _buildData(context, ref, lastData) : _buildError(context, error),
+                  );
             },
           ),
         ),
@@ -73,7 +71,10 @@ class NewsSectionsPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Error: $error'),
+        Text(
+          defineErrorMessage(context, error),
+          textAlign: TextAlign.center,
+        ),
         RandomNewsSectionRequestButton(message: S.of(context).tryAgain),
         const LogoutButton(),
       ],

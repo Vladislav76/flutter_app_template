@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/core/architecture/default_state_notifier.dart';
+import 'package:template_app/src/core/state/default_state_notifier.dart';
 import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/core/persistence/token_storage.dart';
 import 'package:template_app/src/core/state/view_state.dart';
@@ -24,8 +24,8 @@ class InitialAppStateNotifier extends DefaultStateNotifier<bool> {
   final TokenStorage tokenStorage;
 
   void _initialize() async {
-    tryAction(
-      action: () async {
+    tryRequest(
+      request: () async {
         final authToken = await tokenStorage.readAuthorizationToken();
 
         return authToken != null;
