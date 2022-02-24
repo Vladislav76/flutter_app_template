@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
             "Доступ запрещен, Вы не авторизованы"),
         "unknownDataError": MessageLookupByLibrary.simpleMessage(
-            "Неизвстная ошибка данных, пожалуйста, повторите попытку позже"),
+            "Неизвестная ошибка данных, пожалуйста, повторите попытку позже"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Неизвестная ошибка"),
         "unknownNetworkError": MessageLookupByLibrary.simpleMessage(
