@@ -8,7 +8,7 @@ import 'package:template_app/src/features/auth/presentation/state_notifier/auth_
 import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
 import 'package:template_app/src/features/auth/presentation/ui/widgets/logout_button.dart';
 import 'package:template_app/src/features/news_sections/domain/entity/news_section.dart';
-import 'package:template_app/src/features/news_sections/presentation/state_notifier/random_news_section_state_notifier.dart';
+import 'package:template_app/src/features/news_sections/presentation/state_notifier/news_sections_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/widgets/random_news_section_request_button.dart';
 
 class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
@@ -26,7 +26,7 @@ class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
               listenStates(
                 context: context,
                 ref: ref,
-                provider: randomNewsSectionStateProvider,
+                provider: newsSectionsStateProvider,
               );
 
               // Listens auth states
@@ -39,7 +39,7 @@ class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
               );
 
               // Builds state widget
-              return ref.watch(randomNewsSectionStateProvider).when<Widget>(
+              return ref.watch(newsSectionsStateProvider).when<Widget>(
                     initial: () => Container(),
                     loading: () => const DefaultLoadingWidget(),
                     data: (data) => _buildData(context, ref, data),
@@ -52,11 +52,16 @@ class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
     );
   }
 
-  Widget _buildData(BuildContext context, WidgetRef ref, NewsSection data) {
+  Widget _buildData(BuildContext context, WidgetRef ref, List<NewsSection> data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Random entity (ID: ${data.id})'),
+        Expanded(
+          child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, i) => Text('News section (ID: ${data[i].id})'),
+          ),
+        ),
         RandomNewsSectionRequestButton(message: S.of(context).randomize),
         const LogoutButton(),
         ElevatedButton(

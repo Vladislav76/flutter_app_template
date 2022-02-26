@@ -35,8 +35,11 @@ dependencies:
   freezed_annotation: ^1.1.0
 
   # Persistence
-  # Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
-  flutter_secure_storage: ^5.0.2
+  flutter_secure_storage: ^5.0.2 # Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
+  hive: ^2.0.6
+  hive_flutter: ^1.1.0
+  # isar: ^2.2.1
+  # isar_flutter_libs: ^2.2.1 # contains the binaries
 
 # Development packages
 dev_dependencies:
@@ -49,6 +52,8 @@ dev_dependencies:
   json_serializable: ^6.1.4 # Serialization
   chopper_generator: ^4.0.5 # Networking
   freezed: ^1.1.1 # Data classes
+  # isar_generator: ^2.2.1 # Persistence
+  hive_generator: ^1.1.2 # Persistence
 
   # Linting
   flutter_lints: ^1.0.4

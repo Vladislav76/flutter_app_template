@@ -14,21 +14,17 @@ class AuthStateNotifier extends DefaultStateNotifier<void> {
   AuthStateNotifier({required this.repository});
   final AuthRepository repository;
 
-  void login() async {
-    final isSuccessful = await tryRequest(
-      request: () => repository.loginViaEmail(email: 'email', password: 'password'),
+  void login() {
+    makeRequest(
+      request: () => repository.login(email: 'email', password: 'password'),
+      onSuccess: (_) => state = const ViewState.initial(),
     );
-    if (isSuccessful) {
-      state = const ViewState.initial();
-    }
   }
 
   void logout() async {
-    final isSuccessful = await tryRequest(
+    makeRequest(
       request: () => repository.logout(),
+      onSuccess: (_) => state = const ViewState.initial(),
     );
-    if (isSuccessful) {
-      state = const ViewState.initial();
-    }
   }
 }

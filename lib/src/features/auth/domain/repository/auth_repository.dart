@@ -1,6 +1,8 @@
+import 'package:template_app/src/core/utils/either.dart';
+
 abstract class AuthRepository {
-  Future<void> register();
-  Future<void> loginViaEmail({required String email, required String password});
-  Future<void> loginViaSms({required String phone, required int code});
-  Future<void> logout();
+  Future<Either<Object, void>> register();
+  Future<Either<Object, void>> login({required String email, required String password});
+  Future<Either<Object, void>> logout();
+  Future<Either<Object, bool>> isAuthorized();
 }
