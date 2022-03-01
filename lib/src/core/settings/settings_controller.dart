@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:template_app/src/settings/settings_service.dart';
+import 'package:template_app/src/core/settings/settings_service.dart';
+
+// Set up the SettingsController, which will glue user settings to multiple
+// Flutter Widgets.
+final settingsControllerProvider = Provider((ref) {
+  return SettingsController(ref.watch(settingsServiceProvider));
+});
 
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.

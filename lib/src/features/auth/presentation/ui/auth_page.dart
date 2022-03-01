@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
-import 'package:template_app/src/core/ui/default_loading_widget.dart';
+import 'package:template_app/src/core/widgets/default_loading_widget.dart';
 import 'package:template_app/src/core/state/default_state_listener.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/news_sections_page.dart';

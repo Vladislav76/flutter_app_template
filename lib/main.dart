@@ -3,36 +3,52 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 
-import 'package:template_app/src/app/template_app.dart';
-import 'package:template_app/src/features/news_sections/data/cache/news_section_boxes.dart';
-import 'package:template_app/src/settings/settings_controller.dart';
-import 'package:template_app/src/settings/settings_service.dart';
+import 'package:template_app/src/app/ui/app.dart';
+import 'package:template_app/src/core/settings/settings_controller.dart';
+import 'package:template_app/src/features/news_sections/data/cache/news_section_cache.dart';
+import 'package:template_app/src/features/news_sections/data/network/dto/news_section_dto.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // Show a splash widget while awaiting initialization
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Text('Splash page'),
+        ),
+      ),
+    ),
+  );
 
-  // Set up the SettingsController, which will glue user settings to multiple
-  // Flutter Widgets.
-  // TODO: explore
-  final settingsController = SettingsController(SettingsService());
+  // Prepare Hive database
+  await Hive.initFlutter();
+  // NOTE: register here all your data adapters
+  Hive.registerAdapter(NewsSectionDTOAdapter());
+  // NOTE: open here all your data boxes
+  final newsSectionBox = await Hive.openBox<NewsSectionDTO>('news_sections');
+
+  // NOTE: use this object to override providers' values
+  final providerContainer = ProviderContainer(
+    overrides: [
+      // NOTE: override here all providers with data which initialization is asynchronous
+      newsSectionBoxProvider.overrideWithValue(newsSectionBox),
+    ],
+  );
 
   // Load the user's preferred theme while the splash screen is displayed.
   // This prevents a sudden theme change when the app is first displayed.
+  final settingsController = providerContainer.read(settingsControllerProvider);
   await settingsController.loadSettings();
 
-  // Prepares database
-  await Hive.initFlutter();
-  await NewsSectionBoxes.open();
-
-  // Prepares logging system
+  // Prepare logging system
   _setupLogging();
 
-  // Run the app and pass in the SettingsController. The app listens to the
-  // SettingsController for changes, then passes it further down to the
-  // SettingsView.
+  // Run the app and pass provider container.
   runApp(
-    ProviderScope(
-      child: TemplateApp(settingsController: settingsController),
+    UncontrolledProviderScope(
+      container: providerContainer,
+      child: const App(),
     ),
   );
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final settingsServiceProvider = Provider((ref) {
+  return SettingsService();
+});
 
 /// A service that stores and retrieves user settings.
 ///

@@ -1,12 +1,18 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:template_app/src/features/news_sections/data/cache/news_section_boxes.dart';
 import 'package:template_app/src/features/news_sections/data/cache/news_section_cache_api.dart';
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_dto.dart';
 
+// NOTE: please override provider's value (e.g. in the main.dart file)
+final newsSectionBoxProvider = Provider<Box<NewsSectionDTO>>((ref) {
+  throw Exception('Provider was not initialized');
+});
+
 final newsSectionCacheProvider = Provider<NewsSectionCacheApi>((ref) {
-  return NewsSectionCache(box: NewsSectionBoxes.instance.newsSectionBox);
+  return NewsSectionCache(
+    box: ref.watch(newsSectionBoxProvider),
+  );
 });
 
 class NewsSectionCache implements NewsSectionCacheApi {
