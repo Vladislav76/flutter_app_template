@@ -24,7 +24,7 @@ class NewsSectionsStateNotifier extends DefaultStateNotifier<List<NewsSection>> 
     authStateNotifierRef.listen<ViewState<void, Object>>(
       authStateProvider,
       (_, authState) => authState.whenOrNull(
-        loading: () => state = const ViewState.loading(),
+        loading: (_) => state = const ViewState.loading(),
         error: (e, _) => state = ViewState.error(e, lastData: lastData),
       ),
     );
@@ -38,15 +38,15 @@ class NewsSectionsStateNotifier extends DefaultStateNotifier<List<NewsSection>> 
         },
       );
     });
-    requestNewsSections();
+    update();
   }
   final NewsSectionRepository repository;
   final AutoDisposeStateNotifierProviderRef authStateNotifierRef;
   late final StreamSubscription<Either<Object, List<NewsSection>>> _subscription;
 
-  void requestNewsSections() async {
-    state = const ViewState.loading();
-    repository.requestNewsSections();
+  Future<void> update() async {
+    state = ViewState.loading(lastData: lastData);
+    await repository.requestNewsSections();
   }
 
   @override

@@ -35,12 +35,13 @@ class DefaultNewsSectionRepository extends DefaultRepository implements NewsSect
 
   @override
   Future<void> requestNewsSections() async {
+    // TODO: temporaly disabled
     // Gets cached data
-    final cachedData = cache.readNewsSections();
-    if (cachedData.isNotEmpty) {
-      final data = cachedData.map(const NewsSectionDTOMapper().map).toList();
-      _streamController.add(Either.right(data));
-    }
+    // final cachedData = cache.readNewsSections();
+    // if (cachedData.isNotEmpty) {
+    //   final data = cachedData.map(const NewsSectionDTOMapper().map).toList();
+    //   _streamController.add(Either.right(data));
+    // }
 
     // Gets network data
     final serviceResponse = await makeNetworkRequest(request: () => service.getNewsSections());

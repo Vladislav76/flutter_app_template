@@ -15,11 +15,13 @@ mixin DefaultStateListener {
     bool enableErrorPopups = true,
     void Function(Object)? onError,
     void Function(TData)? onData,
+    void Function(TData?)? onLoading,
   }) {
     ref.listen<ViewState<TData, Object>>(
       provider,
       (_, state) {
         state.whenOrNull(
+          loading: onLoading,
           data: onData,
           error: (e, _) {
             if (enableErrorPopups) {

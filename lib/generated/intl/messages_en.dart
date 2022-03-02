@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
             "Failed to find specified network resource, please, try again later"),
         "randomize": MessageLookupByLibrary.simpleMessage("Randomize!"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
             "Access denied, you\'re not authorized"),

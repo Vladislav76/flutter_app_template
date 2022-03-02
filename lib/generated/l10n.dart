@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `Refresh`
+  String get refresh {
+    return Intl.message(
+      'Refresh',
+      name: 'refresh',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Try again`
   String get tryAgain {
     return Intl.message(

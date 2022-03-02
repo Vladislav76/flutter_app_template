@@ -27,7 +27,7 @@ class AuthPage extends StatelessWidget with DefaultStateListener {
 
               // Builds state widget
               return ref.watch(authStateProvider).when(
-                    loading: () => const DefaultLoadingWidget(),
+                    loading: (_) => const DefaultLoadingWidget(),
                     data: (_) => const DefaultLoadingWidget(),
                     error: (_, __) => ElevatedButton(
                       child: Text(S.of(context).authorize),

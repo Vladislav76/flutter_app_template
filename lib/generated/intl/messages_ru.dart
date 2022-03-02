@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
             "Не получилось найти указанный сетевой ресурс, пожалуйста, повторите попытку позже"),
         "randomize": MessageLookupByLibrary.simpleMessage("Рандомизировать!"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Попровать снова"),
         "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
             "Доступ запрещен, Вы не авторизованы"),

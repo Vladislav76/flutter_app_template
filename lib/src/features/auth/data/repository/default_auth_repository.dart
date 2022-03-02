@@ -47,6 +47,9 @@ class DefaultAuthRepository extends DefaultRepository implements AuthRepository 
       defaultData: {},
     );
 
+    // Emulate delay of network request
+    await Future.delayed(const Duration(seconds: 2));
+
     return responseEvent;
   }
 

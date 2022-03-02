@@ -22,8 +22,10 @@ class _$ViewStateTearOff {
     return _Initial<T, E>();
   }
 
-  _Loading<T, E> loading<T, E>() {
-    return _Loading<T, E>();
+  _Loading<T, E> loading<T, E>({T? lastData}) {
+    return _Loading<T, E>(
+      lastData: lastData,
+    );
   }
 
   _Data<T, E> data<T, E>(T data) {
@@ -48,7 +50,7 @@ mixin _$ViewState<T, E> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(T? lastData) loading,
     required TResult Function(T data) data,
     required TResult Function(E error, T? lastData) error,
   }) =>
@@ -56,7 +58,7 @@ mixin _$ViewState<T, E> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
   }) =>
@@ -64,7 +66,7 @@ mixin _$ViewState<T, E> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
@@ -156,7 +158,7 @@ class _$_Initial<T, E> implements _Initial<T, E> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(T? lastData) loading,
     required TResult Function(T data) data,
     required TResult Function(E error, T? lastData) error,
   }) {
@@ -167,7 +169,7 @@ class _$_Initial<T, E> implements _Initial<T, E> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
   }) {
@@ -178,7 +180,7 @@ class _$_Initial<T, E> implements _Initial<T, E> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
@@ -236,6 +238,7 @@ abstract class _$LoadingCopyWith<T, E, $Res> {
   factory _$LoadingCopyWith(
           _Loading<T, E> value, $Res Function(_Loading<T, E>) then) =
       __$LoadingCopyWithImpl<T, E, $Res>;
+  $Res call({T? lastData});
 }
 
 /// @nodoc
@@ -248,60 +251,83 @@ class __$LoadingCopyWithImpl<T, E, $Res>
 
   @override
   _Loading<T, E> get _value => super._value as _Loading<T, E>;
+
+  @override
+  $Res call({
+    Object? lastData = freezed,
+  }) {
+    return _then(_Loading<T, E>(
+      lastData: lastData == freezed
+          ? _value.lastData
+          : lastData // ignore: cast_nullable_to_non_nullable
+              as T?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Loading<T, E> implements _Loading<T, E> {
-  const _$_Loading();
+  const _$_Loading({this.lastData});
+
+  @override
+  final T? lastData;
 
   @override
   String toString() {
-    return 'ViewState<$T, $E>.loading()';
+    return 'ViewState<$T, $E>.loading(lastData: $lastData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading<T, E>);
+        (other.runtimeType == runtimeType &&
+            other is _Loading<T, E> &&
+            const DeepCollectionEquality().equals(other.lastData, lastData));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(lastData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadingCopyWith<T, E, _Loading<T, E>> get copyWith =>
+      __$LoadingCopyWithImpl<T, E, _Loading<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(T? lastData) loading,
     required TResult Function(T data) data,
     required TResult Function(E error, T? lastData) error,
   }) {
-    return loading();
+    return loading(lastData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
   }) {
-    return loading?.call();
+    return loading?.call(lastData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(lastData);
     }
     return orElse();
   }
@@ -345,7 +371,12 @@ class _$_Loading<T, E> implements _Loading<T, E> {
 }
 
 abstract class _Loading<T, E> implements ViewState<T, E> {
-  const factory _Loading() = _$_Loading<T, E>;
+  const factory _Loading({T? lastData}) = _$_Loading<T, E>;
+
+  T? get lastData;
+  @JsonKey(ignore: true)
+  _$LoadingCopyWith<T, E, _Loading<T, E>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -412,7 +443,7 @@ class _$_Data<T, E> implements _Data<T, E> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(T? lastData) loading,
     required TResult Function(T data) data,
     required TResult Function(E error, T? lastData) error,
   }) {
@@ -423,7 +454,7 @@ class _$_Data<T, E> implements _Data<T, E> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
   }) {
@@ -434,7 +465,7 @@ class _$_Data<T, E> implements _Data<T, E> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
     required TResult orElse(),
@@ -567,7 +598,7 @@ class _$_Error<T, E> implements _Error<T, E> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(T? lastData) loading,
     required TResult Function(T data) data,
     required TResult Function(E error, T? lastData) error,
   }) {
@@ -578,7 +609,7 @@ class _$_Error<T, E> implements _Error<T, E> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
   }) {
@@ -589,7 +620,7 @@ class _$_Error<T, E> implements _Error<T, E> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(T? lastData)? loading,
     TResult Function(T data)? data,
     TResult Function(E error, T? lastData)? error,
     required TResult orElse(),

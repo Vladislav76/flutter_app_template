@@ -3,6 +3,7 @@
     "authorize": "Authorize",
     "logout": "Logout",
     "randomize": "Randomize!",
+    "refresh": "Refresh",
     "tryAgain": "Try again",
     "badRequestNetworkError": "Failed to handle network request, please, try again later",
     "notFoundNetworkError": "Failed to find specified network resource, please, try again later",
