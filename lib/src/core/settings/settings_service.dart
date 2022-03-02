@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template_app/src/core/settings/default_settings_storage.dart';
+import 'package:template_app/src/core/settings/settings_storage.dart';
 
 final settingsServiceProvider = Provider((ref) {
-  return SettingsService();
+  return SettingsService(
+    storage: ref.read(settingsStorageProvider),
+  );
 });
 
 /// A service that stores and retrieves user settings.
-///
-/// By default, this class does not persist user settings. If you'd like to
-/// persist the user settings locally, use the shared_preferences package. If
-/// you'd like to store settings on a web server, use the http package.
 class SettingsService {
+  const SettingsService({required this.storage});
+  final SettingsStorage storage;
+
   /// Loads the User's preferred ThemeMode from local or remote storage.
-  Future<ThemeMode> themeMode() async => ThemeMode.system;
+  Future<ThemeMode> themeMode() async {
+    final theme = await storage.readThemeMode();
+
+    return theme ?? ThemeMode.system;
+  }
 
   /// Persists the user's preferred ThemeMode to local or remote storage.
   Future<void> updateThemeMode(ThemeMode theme) async {
-    // Use the shared_preferences package to persist settings locally or the
-    // http package to persist settings over the network.
+    return storage.writeThemeMode(theme);
   }
 }

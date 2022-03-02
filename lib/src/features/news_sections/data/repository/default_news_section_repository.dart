@@ -15,7 +15,7 @@ import 'package:template_app/src/features/news_sections/domain/repository/news_s
 final newsSectionRepositoryProvider = Provider<NewsSectionRepository>((ref) {
   return DefaultNewsSectionRepository(
     service: NewsSectionService.create(
-      client: ref.read(defaultChopperClientProvider),
+      client: ref.read(chopperClientProvider),
     ),
     cache: ref.read(newsSectionCacheProvider),
   );

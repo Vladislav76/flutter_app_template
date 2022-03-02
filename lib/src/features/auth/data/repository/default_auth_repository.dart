@@ -10,7 +10,7 @@ import 'package:template_app/src/features/auth/domain/repository/auth_repository
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return DefaultAuthRepository(
-    service: DemoAuthService.create(client: ref.read(defaultChopperClientProvider)),
+    service: DemoAuthService.create(client: ref.read(chopperClientProvider)),
     tokenStorage: ref.read(tokenStorageProvider),
   );
 });

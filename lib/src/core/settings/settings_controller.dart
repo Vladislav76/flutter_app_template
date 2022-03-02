@@ -5,7 +5,7 @@ import 'package:template_app/src/core/settings/settings_service.dart';
 
 // Set up the SettingsController, which will glue user settings to multiple
 // Flutter Widgets.
-final settingsControllerProvider = Provider((ref) {
+final settingsControllerProvider = ChangeNotifierProvider((ref) {
   return SettingsController(ref.watch(settingsServiceProvider));
 });
 

@@ -9,7 +9,7 @@ import 'package:template_app/src/features/auth/data/network/service/demo_auth_se
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_dto.dart';
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_response_dto.dart';
 
-final defaultChopperClientProvider = Provider<ChopperClient>((ref) {
+final chopperClientProvider = Provider<ChopperClient>((ref) {
   final refreshTokenClient = ChopperClient(
     baseUrl: 'https://content.guardianapis.com',
     interceptors: [

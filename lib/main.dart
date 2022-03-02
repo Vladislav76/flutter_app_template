@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 
 import 'package:template_app/src/app/ui/app.dart';
+import 'package:template_app/src/core/settings/default_settings_storage.dart';
 import 'package:template_app/src/core/settings/settings_controller.dart';
 import 'package:template_app/src/features/news_sections/data/cache/news_section_cache.dart';
 import 'package:template_app/src/features/news_sections/data/network/dto/news_section_dto.dart';
@@ -28,11 +29,15 @@ void main() async {
   // NOTE: open here all your data boxes
   final newsSectionBox = await Hive.openBox<NewsSectionDTO>('news_sections');
 
+  // Prepare settings storage
+  final settingsStorage = await DefaultSettingsStorage.initStorage();
+
   // NOTE: use this object to override providers' values
   final providerContainer = ProviderContainer(
     overrides: [
       // NOTE: override here all providers with data which initialization is asynchronous
       newsSectionBoxProvider.overrideWithValue(newsSectionBox),
+      settingsStorageProvider.overrideWithValue(settingsStorage),
     ],
   );
 

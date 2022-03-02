@@ -35,6 +35,7 @@ dependencies:
   freezed_annotation: ^1.1.0
 
   # Persistence
+  shared_preferences: ^2.0.13
   flutter_secure_storage: ^5.0.2 # Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
   hive: ^2.0.6
   hive_flutter: ^1.1.0
