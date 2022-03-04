@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:template_app/generated/l10n.dart';
-import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
-import 'package:template_app/src/features/news_sections/presentation/ui/news_sections_page.dart';
-import 'package:template_app/src/features/splash/presentation/ui/splash_page.dart';
+import 'package:template_app/src/app/routing/app_router.gr.dart';
 import 'package:template_app/src/core/settings/settings_controller.dart';
+
+final _appRouter = AppRouter();
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class App extends StatelessWidget {
         return AnimatedBuilder(
           animation: settingsController,
           builder: (BuildContext context, Widget? child) {
-            return MaterialApp(
+            return MaterialApp.router(
               // Providing a restorationScopeId allows the Navigator built by the
               // MaterialApp to restore the navigation stack when a user leaves and
               // returns to the app after it has been killed while running in the
@@ -71,29 +70,12 @@ class App extends StatelessWidget {
               darkTheme: ThemeData(brightness: Brightness.dark),
               themeMode: settingsController.themeMode,
 
-              // Define a function to handle named routes in order to support
-              // Flutter web url navigation and deep linking.
-              onGenerateRoute: _onGenerateRoute,
+              // Routing arguments
+              routerDelegate: _appRouter.delegate(),
+              routeInformationParser: _appRouter.defaultRouteParser(),
             );
           },
         );
-      },
-    );
-  }
-
-  Route<dynamic>? _onGenerateRoute(RouteSettings routeSettings) {
-    return MaterialPageRoute<void>(
-      settings: routeSettings,
-      builder: (BuildContext context) {
-        switch (routeSettings.name) {
-          case NewsSectionsPage.routeName:
-            return const NewsSectionsPage();
-          case AuthPage.routeName:
-            return const AuthPage();
-          case SplashPage.routeName:
-          default:
-            return const SplashPage();
-        }
       },
     );
   }

@@ -43,6 +43,9 @@ dependencies:
   # Pull-to-refresh ability
   pull_to_refresh: ^2.0.0
 
+  # Routing
+  auto_route: ^3.2.4
+
 # Development packages
 dev_dependencies:
   # Testing
@@ -55,6 +58,7 @@ dev_dependencies:
   chopper_generator: ^4.0.5 # Networking
   freezed: ^1.1.1 # Data classes
   hive_generator: ^1.1.2 # Persistence
+  auto_route_generator: ^3.2.3 # Routing
 
   # Linting
   flutter_lints: ^1.0.4

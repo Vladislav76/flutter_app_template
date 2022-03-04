@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
+import 'package:template_app/src/app/routing/app_router.gr.dart';
 import 'package:template_app/src/core/widgets/default_loading_widget.dart';
 import 'package:template_app/src/core/state/default_state_listener.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
-import 'package:template_app/src/features/news_sections/presentation/ui/news_sections_page.dart';
 
 class AuthPage extends StatelessWidget with DefaultStateListener {
   const AuthPage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class AuthPage extends StatelessWidget with DefaultStateListener {
                 context: context,
                 ref: ref,
                 provider: authStateProvider,
-                onData: (_) => Navigator.of(context).restorablePushReplacementNamed(NewsSectionsPage.routeName),
+                onData: (_) => AutoRouter.of(context).pushAndPopUntil(const HomeRoute(), predicate: (_) => false),
               );
 
               // Builds state widget

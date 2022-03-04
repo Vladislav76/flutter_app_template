@@ -27,13 +27,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "authorize": MessageLookupByLibrary.simpleMessage("Войти"),
         "badRequestNetworkError": MessageLookupByLibrary.simpleMessage(
             "Не получилось обработать сетевой запрос, пожалуйста, повторите попытку позже"),
+        "home": MessageLookupByLibrary.simpleMessage("Главная"),
         "internetConnectionNetworkError": MessageLookupByLibrary.simpleMessage(
             "Не получилось загрузить данные, пожалуйста, проверьте Интернет-соединение"),
         "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
         "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
             "Не получилось найти указанный сетевой ресурс, пожалуйста, повторите попытку позже"),
+        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "profileEditing":
+            MessageLookupByLibrary.simpleMessage("Редактирование профиля"),
+        "profileInfo": MessageLookupByLibrary.simpleMessage("Инфо профиля"),
         "randomize": MessageLookupByLibrary.simpleMessage("Рандомизировать!"),
         "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Попровать снова"),
         "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
             "Доступ запрещен, Вы не авторизованы"),

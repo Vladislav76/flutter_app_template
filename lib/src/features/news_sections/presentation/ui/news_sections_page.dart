@@ -1,11 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template_app/src/app/routing/app_router.gr.dart';
 import 'package:template_app/src/core/settings/settings_panel.dart';
 import 'package:template_app/src/core/widgets/default_loading_widget.dart';
 import 'package:template_app/src/core/state/default_state_listener.dart';
 import 'package:template_app/src/core/persistence/default_token_storage.dart';
 import 'package:template_app/src/features/auth/presentation/state_notifier/auth_state_notifier.dart';
-import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
 import 'package:template_app/src/features/auth/presentation/ui/widgets/logout_button.dart';
 import 'package:template_app/src/features/auth/presentation/ui/widgets/no_data_placeholder.dart';
 import 'package:template_app/src/features/news_sections/domain/entity/news_section.dart';
@@ -36,7 +37,7 @@ class NewsSectionsPage extends StatelessWidget with DefaultStateListener {
                 ref: ref,
                 provider: authStateProvider,
                 enableErrorPopups: false,
-                onData: (_) => Navigator.of(context).restorablePushNamedAndRemoveUntil(AuthPage.routeName, (route) => false),
+                onData: (_) => AutoRouter.of(context).pushAndPopUntil(const AuthRoute(), predicate: (_) => false),
               );
 
               // Build state widget

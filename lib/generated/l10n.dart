@@ -110,6 +110,56 @@ class S {
     );
   }
 
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile info`
+  String get profileInfo {
+    return Intl.message(
+      'Profile info',
+      name: 'profileInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile editing`
+  String get profileEditing {
+    return Intl.message(
+      'Profile editing',
+      name: 'profileEditing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Failed to handle network request, please, try again later`
   String get badRequestNetworkError {
     return Intl.message(

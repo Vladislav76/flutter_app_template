@@ -26,13 +26,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "authorize": MessageLookupByLibrary.simpleMessage("Authorize"),
         "badRequestNetworkError": MessageLookupByLibrary.simpleMessage(
             "Failed to handle network request, please, try again later"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "internetConnectionNetworkError": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, please, check your internet connection"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "notFoundNetworkError": MessageLookupByLibrary.simpleMessage(
             "Failed to find specified network resource, please, try again later"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileEditing":
+            MessageLookupByLibrary.simpleMessage("Profile editing"),
+        "profileInfo": MessageLookupByLibrary.simpleMessage("Profile info"),
         "randomize": MessageLookupByLibrary.simpleMessage("Randomize!"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "unathorizedNetworkError": MessageLookupByLibrary.simpleMessage(
             "Access denied, you\'re not authorized"),
