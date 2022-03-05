@@ -6,6 +6,8 @@ import 'package:template_app/src/features/profile/editing/presentation/ui/profil
 import 'package:template_app/src/features/profile/info/presentation/ui/profile_info_page.dart';
 import 'package:template_app/src/features/splash/presentation/ui/splash_page.dart';
 
+part 'app_router.gr.dart';
+
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
@@ -49,4 +51,4 @@ import 'package:template_app/src/features/splash/presentation/ui/splash_page.dar
     ),
   ],
 )
-class $AppRouter {}
+class AppRouter extends _$AppRouter {}

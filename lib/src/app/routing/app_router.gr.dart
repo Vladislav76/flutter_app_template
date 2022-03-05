@@ -10,85 +10,73 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i8;
+part of 'app_router.dart';
 
-import '../../features/auth/presentation/ui/auth_page.dart' as _i2;
-import '../../features/home/presentation/ui/home_page.dart' as _i3;
-import '../../features/news_sections/presentation/ui/news_sections_page.dart'
-    as _i5;
-import '../../features/profile/editing/presentation/ui/profile_editing_page.dart'
-    as _i7;
-import '../../features/profile/info/presentation/ui/profile_info_page.dart'
-    as _i6;
-import '../../features/splash/presentation/ui/splash_page.dart' as _i1;
-
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+class _$AppRouter extends RootStackRouter {
+  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.SplashPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SplashPage());
     },
     AuthRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.AuthPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const AuthPage());
     },
     HomeRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.HomePage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const HomePage());
     },
     NewsSectionsRouter.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.EmptyRouterPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const EmptyRouterPage());
     },
     ProfileRouter.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.EmptyRouterPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const EmptyRouterPage());
     },
     NewsSectionsRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.NewsSectionsPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const NewsSectionsPage());
     },
     ProfileInfoRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.ProfileInfoPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ProfileInfoPage());
     },
     ProfileEditingRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.ProfileEditingPage());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ProfileEditingPage());
     }
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(SplashRoute.name, path: '/'),
-        _i4.RouteConfig(AuthRoute.name, path: '/auth'),
-        _i4.RouteConfig(HomeRoute.name, path: '/', children: [
-          _i4.RouteConfig(NewsSectionsRouter.name,
+  List<RouteConfig> get routes => [
+        RouteConfig(SplashRoute.name, path: '/'),
+        RouteConfig(AuthRoute.name, path: '/auth'),
+        RouteConfig(HomeRoute.name, path: '/', children: [
+          RouteConfig(NewsSectionsRouter.name,
               path: 'news_sections',
               parent: HomeRoute.name,
               children: [
-                _i4.RouteConfig(NewsSectionsRoute.name,
+                RouteConfig(NewsSectionsRoute.name,
                     path: '', parent: NewsSectionsRouter.name),
-                _i4.RouteConfig('*#redirect',
+                RouteConfig('*#redirect',
                     path: '*',
                     parent: NewsSectionsRouter.name,
                     redirectTo: '',
                     fullMatch: true)
               ]),
-          _i4.RouteConfig(ProfileRouter.name,
+          RouteConfig(ProfileRouter.name,
               path: 'profile',
               parent: HomeRoute.name,
               children: [
-                _i4.RouteConfig(ProfileInfoRoute.name,
+                RouteConfig(ProfileInfoRoute.name,
                     path: '', parent: ProfileRouter.name),
-                _i4.RouteConfig(ProfileEditingRoute.name,
+                RouteConfig(ProfileEditingRoute.name,
                     path: 'edit', parent: ProfileRouter.name),
-                _i4.RouteConfig('*#redirect',
+                RouteConfig('*#redirect',
                     path: '*',
                     parent: ProfileRouter.name,
                     redirectTo: '',
@@ -99,34 +87,34 @@ class AppRouter extends _i4.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.SplashPage]
-class SplashRoute extends _i4.PageRouteInfo<void> {
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute() : super(SplashRoute.name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
 /// generated route for
-/// [_i2.AuthPage]
-class AuthRoute extends _i4.PageRouteInfo<void> {
+/// [AuthPage]
+class AuthRoute extends PageRouteInfo<void> {
   const AuthRoute() : super(AuthRoute.name, path: '/auth');
 
   static const String name = 'AuthRoute';
 }
 
 /// generated route for
-/// [_i3.HomePage]
-class HomeRoute extends _i4.PageRouteInfo<void> {
-  const HomeRoute({List<_i4.PageRouteInfo>? children})
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
       : super(HomeRoute.name, path: '/', initialChildren: children);
 
   static const String name = 'HomeRoute';
 }
 
 /// generated route for
-/// [_i4.EmptyRouterPage]
-class NewsSectionsRouter extends _i4.PageRouteInfo<void> {
-  const NewsSectionsRouter({List<_i4.PageRouteInfo>? children})
+/// [EmptyRouterPage]
+class NewsSectionsRouter extends PageRouteInfo<void> {
+  const NewsSectionsRouter({List<PageRouteInfo>? children})
       : super(NewsSectionsRouter.name,
             path: 'news_sections', initialChildren: children);
 
@@ -134,33 +122,33 @@ class NewsSectionsRouter extends _i4.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.EmptyRouterPage]
-class ProfileRouter extends _i4.PageRouteInfo<void> {
-  const ProfileRouter({List<_i4.PageRouteInfo>? children})
+/// [EmptyRouterPage]
+class ProfileRouter extends PageRouteInfo<void> {
+  const ProfileRouter({List<PageRouteInfo>? children})
       : super(ProfileRouter.name, path: 'profile', initialChildren: children);
 
   static const String name = 'ProfileRouter';
 }
 
 /// generated route for
-/// [_i5.NewsSectionsPage]
-class NewsSectionsRoute extends _i4.PageRouteInfo<void> {
+/// [NewsSectionsPage]
+class NewsSectionsRoute extends PageRouteInfo<void> {
   const NewsSectionsRoute() : super(NewsSectionsRoute.name, path: '');
 
   static const String name = 'NewsSectionsRoute';
 }
 
 /// generated route for
-/// [_i6.ProfileInfoPage]
-class ProfileInfoRoute extends _i4.PageRouteInfo<void> {
+/// [ProfileInfoPage]
+class ProfileInfoRoute extends PageRouteInfo<void> {
   const ProfileInfoRoute() : super(ProfileInfoRoute.name, path: '');
 
   static const String name = 'ProfileInfoRoute';
 }
 
 /// generated route for
-/// [_i7.ProfileEditingPage]
-class ProfileEditingRoute extends _i4.PageRouteInfo<void> {
+/// [ProfileEditingPage]
+class ProfileEditingRoute extends PageRouteInfo<void> {
   const ProfileEditingRoute() : super(ProfileEditingRoute.name, path: 'edit');
 
   static const String name = 'ProfileEditingRoute';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template_app/generated/l10n.dart';
-import 'package:template_app/src/app/routing/app_router.gr.dart';
+import 'package:template_app/src/app/routing/app_router.dart';
 import 'package:template_app/src/core/settings/settings_controller.dart';
 
 final _appRouter = AppRouter();

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template_app/src/app/routing/app_router.gr.dart';
+import 'package:template_app/src/app/routing/app_router.dart';
 import 'package:template_app/src/core/state/default_state_listener.dart';
 import 'package:template_app/src/features/splash/presentation/state_notifier/initial_app_state_notifier.dart';
 

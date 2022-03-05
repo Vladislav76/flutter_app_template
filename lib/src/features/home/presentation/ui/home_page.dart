@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:template_app/generated/l10n.dart';
-import 'package:template_app/src/app/routing/app_router.gr.dart';
+import 'package:template_app/src/app/routing/app_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
