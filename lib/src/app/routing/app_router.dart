@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:template_app/src/features/auth/presentation/ui/auth_page.dart';
 import 'package:template_app/src/features/home/presentation/ui/home_page.dart';
 import 'package:template_app/src/features/news_sections/presentation/ui/news_sections_page.dart';
