@@ -13,11 +13,13 @@ analyzer:
   plugins:
     - dart_code_metrics
   exclude:
-    - "lib/generated/**"
+    - "**/intl/**"
+    - "**/l10n.dart"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/*.chopper.dart"
     - "**/*.gr.dart"
+    - "**/dump/**"
 
 linter:
   # The lint rules applied to this project can be customized in the
@@ -51,6 +53,8 @@ dart_code_metrics:
     number-of-parameters: 8
   metrics-exclude:
     - test/**
+    - intl/**
+    - l10n.dart
   rules:
     # Common rules
     - newline-before-return
