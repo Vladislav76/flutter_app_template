@@ -1,0 +1,4 @@
+enum CustomThemeMode {
+  light,
+  dark,
+}
